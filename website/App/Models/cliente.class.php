@@ -142,7 +142,7 @@ class Cliente extends Connect
     }
     public function index2($value)
     {
-        $this->query = "SELECT * FROM `cliente`,`fabricante`,`equip` WHERE (`Fabricante_idFabricante` = `idFabricante` AND `Equip_CodRefEquip` = `CodRefEquip`) AND `itensPublic` = '$value'";
+        $this->query = "SELECT * FROM `cliente` where `usuario_idUsuario` = '$value' ";
         $this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL));
 
         if ($this->result) {
@@ -152,23 +152,23 @@ class Cliente extends Connect
           <tr>
             <th>Ativo</th>
             <th>Image</th>
-            <th>Nome Equipamento</th>
-            <th>Fabricante</th>
-            <th>Quant. Estoque</th>
-            <th>Quant. Vendido</th>
-            <th>V. Compra.</th>
-            <th>V. Vendido</th>
-            <th>Data Compra</th>
-            <th>Data Vencimento</th>
-            <th>Edit</th>
-            <th>Public</th>
+            <th>Nome Produtor</th>
+            <th>CPF</th>
+            <th>Estado Civil</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Nome da Mãe</th>
+            <th>Sexo</th>
+            <th>Data de nascimento</th>
+            <th>Naturalidade:</th>
+            <th>Nacionalidade</th>
           </tr>
         </thead>
         <tbody>';
 
             while ($row = mysqli_fetch_array($this->result)) {
 
-                if ($row['ItensAtivo'] == 0) {
+                if ($row['idcliente'] == 0) {
                     $c = 'class="label-warning"';
                 } else {
                     $c = " ";
@@ -181,8 +181,8 @@ class Cliente extends Connect
           </span>
 
           <!-- checkbox -->';
-                $id = $row['idItens'];
-                $Ativo = $row['ItensAtivo'];
+                $id = $row['idcliente'];
+                $Ativo = $row['idcliente'];
 
                 echo '<form class="label" name="ativ' . $id . '" enctype="multipart/form-data"  action="../../App/Database/action.php" method="post">
           <input type="hidden" name="id" id="id_action' . $id . '" value="' . $id . '">          
@@ -201,17 +201,20 @@ class Cliente extends Connect
                 if (!empty($row['Image'])) {
                     echo '<img src="../' . $row['Image'] . '" width="50" />';
                 }
-                echo '</td><td>' . $row['NomeEquip'] . '</td>
-          <td>' . $row['NomeFabricante'] . '</td>
-          <td>' . $row['QuantItens'] . '</td>
-          <td>' . $row['QuantItensVend'] . '</td>
-          <td>' . $row['ValCompItens'] . '</td>
-          <td>' . $row['ValVendItens'] . '</td>
-          <td>' . $row['DataCompraItens'] . '</td>
-          <td>' . $row['DataVenci_Itens'] . '</td>        
+                echo '</td><td>' . $row['NomeCliente'] . '</td>
+          <td>' . $row['cpfCliente'] . '</td>
+          <td>' . $row['estado_civil'] . '</td>
+          <td>' . $row['telefone'] . '</td>
+          <td>' . $row['EmailCliente'] . '</td>
+          <td>' . $row['nome_mae'] . '</td>
+          <td>' . $row['sexo'] . '</td>
+          <td>' . $row['data_nascimento'] . '</td>
+          <td>' . $row['naturalidade'] . '</td>
+          <td>' . $row['nacionalidade'] . '</td>
+               
           
           <td>
-                <a href="edititens.php?q=' . $row['idItens'] . '"><i class="fa fa-edit"></i></a>
+                <a href="edititens.php?q=' . $row['idclienteCliente'] . '"><i class="fa fa-edit"></i></a>
           </td>
           <td>
               <!-- Button trigger modal -->
