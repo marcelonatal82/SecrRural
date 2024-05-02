@@ -39,6 +39,7 @@
           
           <!-- todo text -->
           <span class="text"><span class="badge left">'.$row['CodRefEquip'].'</span> '.$row['NomeEquip'].'</span>
+          
           <!-- Emphasis label -->
           <!-- <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small> -->
           <!-- General tools such as edit or delete-->

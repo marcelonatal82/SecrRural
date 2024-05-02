@@ -35,7 +35,7 @@ if($perm != 1){
         <!-- Small boxes (Stat box) -->
         <div class="row">';
 
-  echo ' <a href="./" class="btn btn-success">Voltar</a>
+  echo ' <a href="./list.php" class="btn btn-success">Voltar</a>
         <div class="row">
           <!-- left column -->
           <div class="col-md-6">

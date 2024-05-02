@@ -9,7 +9,7 @@ if (isset($_POST['upload']) == 'Cadastrar') {
 	$ValVendItens = $_POST['ValVendItens'];
 	$DataCompraItens = $_POST['DataCompraItens'];
 	$DataVenci_Itens = $_POST['DataVenci_Itens'];
-	$Equip_CodRefEquip = $_POST['CodRefEquip'];
+	$Equip_CodRefEquip = $_POST['Equip_CodRefEquip'];
 	$Fabricante_idFabricante = $_POST['idFabricante'];
 
 	$iduser = $_POST['iduser'];

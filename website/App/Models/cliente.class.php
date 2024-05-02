@@ -27,10 +27,19 @@ class Cliente extends Connect
      		
      			while ($row = mysqli_fetch_array($this->result)) {
 
+     				echo '<br />Produtor: '. $row['NomeCliente'];
+                    echo '<br />CPF: '. $row['cpfCliente'];
+                    echo '<br />Nome da Mãe: '. $row['nome_mae'];
+                    echo '<br />Email: '. $row['EmailCliente'];
+                    echo '<br />Estado civil: '. $row['estado_civil'];
+                    echo '<br />Nome da Mae: '. $row['nome_mae'];
+                    echo '<br />Data de Nascimento: '. $row['data_nascimento'];
+                    echo '<br />Data de registro: '. $row['dataRegCliente'];
 
-     				echo '<br />Cliente: '. $row['NomeCliente'];
 
-     			}
+
+
+                }
      		}
    	}//fim -- index
 
@@ -98,6 +107,39 @@ class Cliente extends Connect
         }
       }
 
+    public function editCliente($value)
+    {
+        $this->query = "SELECT * FROM `cliente` WHERE `idCliente` = '$value'";
+        $this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL));
+
+        if ($row = mysqli_fetch_array($this->result)) {
+
+            $idCliente = $row['idCliente'];
+            $NomeCliente = $row['NomeCliente'];
+            $cpfCliente = $row['cpfCliente'];
+            $nome_mae = $row['nome_mae'];
+            $EmailCliente = $row['EmailCliente'];
+            $estado_civil = $row['estado_civil'];
+            $sexo = $row['sexo'];
+            $data_nascimento = $row['data_nascimento'];
+            $naturalidade = $row['naturalidade'];
+            $nacionalidade = $row['nacionalidade'];
+
+            return $resp = array('cliente' => [
+                'idCliente' => $idCliente,
+                'NomeCliente' => $NomeCliente,
+                'cpfCliente'   => $cpfCliente,
+                'nome_mae'   => $nome_mae,
+                'EmailCliente' => $EmailCliente,
+                'estado_civil' => $estado_civil,
+                'sexo' => $sexo,
+                'data_nascimento' => $data_nascimento,
+                'naturalidade' => $naturalidade,
+                'nacionalidade' => $nacionalidade
+            ],);
+        }
+    }
+
       function statusCliente($status, $idCliente){
 
         $this->query = "UPDATE `cliente` SET `statusCliente`= '$status' WHERE `idCliente`= '$idCliente'";
@@ -142,7 +184,7 @@ class Cliente extends Connect
     }
     public function index2($value)
     {
-        $this->query = "SELECT * FROM `cliente` where `usuario_idUsuario` = '$value' ";
+        $this->query = "SELECT * FROM `cliente`";
         $this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL));
 
         if ($this->result) {
@@ -151,24 +193,27 @@ class Cliente extends Connect
         <thead class="thead-inverse">
           <tr>
             <th>Ativo</th>
-            <th>Image</th>
-            <th>Nome Produtor</th>
+            <th></th>
+            <th>Codigo</th>
+            <th>Nome</th>
             <th>CPF</th>
-            <th>Estado Civil</th>
-            <th>Telefone</th>
-            <th>Email</th>
             <th>Nome da Mãe</th>
+            <th>Email</th>
+            <th>Estado Civil</th>
             <th>Sexo</th>
-            <th>Data de nascimento</th>
-            <th>Naturalidade:</th>
-            <th>Nacionalidade</th>
+            <th>Data Nascimento</th>
+            <th>Naturalidade</th>
+            <th>Nascionalidade</th>
+            <th>Data/Hora de Registro</th>
+            <th>Edit</th>
+            <th>Public</th>
           </tr>
         </thead>
         <tbody>';
 
             while ($row = mysqli_fetch_array($this->result)) {
 
-                if ($row['idcliente'] == 0) {
+                if ($row['statusCliente'] == 0) {
                     $c = 'class="label-warning"';
                 } else {
                     $c = " ";
@@ -181,8 +226,8 @@ class Cliente extends Connect
           </span>
 
           <!-- checkbox -->';
-                $id = $row['idcliente'];
-                $Ativo = $row['idcliente'];
+                $id = $row['idCliente'];
+                $Ativo = $row['statusCliente'];
 
                 echo '<form class="label" name="ativ' . $id . '" enctype="multipart/form-data"  action="../../App/Database/action.php" method="post">
           <input type="hidden" name="id" id="id_action' . $id . '" value="' . $id . '">          
@@ -201,26 +246,26 @@ class Cliente extends Connect
                 if (!empty($row['Image'])) {
                     echo '<img src="../' . $row['Image'] . '" width="50" />';
                 }
-                echo '</td><td>' . $row['NomeCliente'] . '</td>
-          <td>' . $row['cpfCliente'] . '</td>
-          <td>' . $row['estado_civil'] . '</td>
-          <td>' . $row['telefone'] . '</td>
-          <td>' . $row['EmailCliente'] . '</td>
-          <td>' . $row['nome_mae'] . '</td>
-          <td>' . $row['sexo'] . '</td>
-          <td>' . $row['data_nascimento'] . '</td>
-          <td>' . $row['naturalidade'] . '</td>
-          <td>' . $row['nacionalidade'] . '</td>
-               
+                echo '</td><td>' . $row['idCliente'] . '</td>
+              <td>' . $row['NomeCliente'] . '</td>
+              <td>' . $row['cpfCliente'] . '</td>
+              <td>' . $row['nome_mae'] . '</td>
+              <td>' . $row['EmailCliente'] . '</td>
+              <td>' . $row['estado_civil'] . '</td>
+              <td>' . $row['sexo'] . '</td>
+              <td>' . $row['data_nascimento'] . '</td>
+              <td>' . $row['naturalidade'] . '</td>
+              <td>' . $row['nacionalidade'] . '</td>
+              <td>' . $row['dataRegCliente'] . '</td>        
           
           <td>
-                <a href="edititens.php?q=' . $row['idclienteCliente'] . '"><i class="fa fa-edit"></i></a>
+                <a href="editcliente.php?q=' . $row['idCliente'] . '"><i class="fa fa-edit"></i></a>
           </td>
           <td>
               <!-- Button trigger modal -->
-                    <a href="" data-toggle="modal" data-target="#myModal' . $row['idItens'] . '">';
+                    <a href="" data-toggle="modal" data-target="#myModal' . $row['idCliente'] . '">';
 
-                if ($row['Public'] == 0) {
+                if ($row['statusCliente'] == 0) {
                     echo '<i class="glyphicon glyphicon-remove" aria-hidden="true"></i>';
                 } else {
                     echo '<i class="glyphicon glyphicon-ok" aria-hidden="true"></i>';
@@ -231,18 +276,18 @@ class Cliente extends Connect
 
     <!-- Modal -->
   <div>
-    <form id="delItens' . $row['idItens'] . '" name="delItens' . $row['idItens'] . '" action="../../App/Database/delItens.php" method="post" style="color:#000;">
-    <div class="modal fade" id="myModal' . $row['idItens'] . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <form id="delcliente' . $row['idCliente'] . '" name="delcliente' . $row['idCliente'] . '" action="../../App/Database/delcliente.php" method="post" style="color:#000;">
+    <div class="modal fade" id="myModal' . $row['idCliente'] . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Você tem serteza que deseja alterar o status deste item na sua lista.</h4>
+            <h4 class="modal-title" id="myModalLabel">Você tem certeza que deseja alterar o status deste item na sua lista.</h4>
           </div>
           <div class="modal-body">
-            Código: ' . $row['idItens'] . ' - ' . $row['NomeEquip'] . ' - ' . $row['NomeFabricante'] . '
+            Código: ' . $row['idCliente'] . ' - ' . $row['NomeCliente'] . ' 
           </div>
-          <input type="hidden" id="id' . $row['idItens'] . '" name="id" value="' . $row['idItens'] . '">
+          <input type="hidden" id="id' . $row['idCliente'] . '" name="id" value="' . $row['idCliente'] . '">
           <div class="modal-footer">
             <button type="submit" value="Cancelar" class="btn btn-default">Não</button>
             <button type="submit" name="update" value="Cadastrar" class="btn btn-primary">Sim</button>
@@ -258,7 +303,7 @@ class Cliente extends Connect
             echo '</tbody>
   </table>';
         }
-    }//UPDATE CLIENTE
+    }//UPDATE CLIENTE EXCLUIR
 	function search($value){
 
         if(isset($value))  
@@ -325,3 +370,4 @@ class Cliente extends Connect
     }
 
 }
+    $cliente = new Cliente;

@@ -142,7 +142,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Você tem serteza que deseja alterar o status deste item na sua lista.</h4>
+            <h4 class="modal-title" id="myModalLabel">Você tem certeza que deseja alterar o status deste item na sua lista.</h4>
           </div>
           <div class="modal-body">
             Código: ' . $row['idItens'] . ' - ' . $row['NomeEquip'] . ' - ' . $row['NomeFabricante'] . '
@@ -208,7 +208,7 @@
       }
     }
 
-    public function updateItens($idItens, $nomeimagem, $QuantItens, $ValCompItens, $ValVendItens, $DataCompraItens, $DataVenci_Itens, $Produto_CodRefProduto, $Fabricante_idFabricante, $idusuario)
+    public function updateItens($idItens, $nomeimagem, $QuantItens, $ValCompItens, $ValVendItens, $DataCompraItens, $DataVenci_Itens, $Equip_CodRefProduto, $Fabricante_idFabricante, $idusuario)
     {
       $this->query = "UPDATE `itens` SET
       `Image` = '$nomeimagem', 
@@ -217,7 +217,7 @@
       `ValVendItens`='$ValVendItens',
       `DataCompraItens`='$DataCompraItens',
       `DataVenci_Itens`='$DataVenci_Itens',
-      `Produto_CodRefProduto`='$Produto_CodRefProduto',
+      `Equip_CodRefProduto`='$Equip_CodRefProduto',
       `Fabricante_idFabricante`='$Fabricante_idFabricante',
       `Usuario_idUser`='$idusuario' 
       WHERE `idItens`= '$idItens'";
@@ -241,7 +241,7 @@
         header('Location: ../../views/itens/index.php?alert=0');
       }
     }
-
+      
     public function DelItens($value)
     {
 
@@ -263,7 +263,7 @@
       } else {
         header('Location: ../../views/itens/index.php?alert=0');
       }
-    }
+    }// deletar o itens 
 
     public function Ativo($value, $id)
     {

@@ -4,42 +4,41 @@ require_once '../Models/cliente.class.php';
 
 if(isset($_POST['upload']) == 'Cadastrar'){
 
-$NomeCliente = $_POST['NomeCliente'];
+		$NomeCliente = $_POST['NomeCliente'];
+		$cpfCliente = $_POST['cpfCliente'];
+		$EmailCliente = $_POST['emailCliente'];
+		$nome_mae = $_POST['nome_mae'];
+		$sexo = $_POST['sexo'];
+		$naturalidade = $_POST['naturalidade'];
+		$data_nascimento = $_POST['data_nascimento'];
+		$nacionalidade = $_POST['nacionalidade'];
+		$estado_civil = $_POST['estado_civil'];
 
-//---Fabricante---//
-$cpfCliente = $_POST['cpfCliente'];
-$EmailCliente = $_POST['emailCliente'];
-$sexo = $_POST['sexo'];
-$naturalidade = $_POST['naturalidade'];
-$data_nascimento = $_POST['data_nascimento'];
-$nacionalidade = $_POST['nacionalidade'];
-$estado_civil = $_POST['estado_civil'];
-$nome_mae = $_POST['nome_mae'];
 
-//--Representante--//
+		//--produtores--//
 
-$cliente = new Cliente;
+		$cliente = new Cliente;
 
-if($NomeCliente != NULL && $cpfCliente != NULL && $EmailCliente != NULL){
+		if($NomeCliente != NULL && $cpfCliente != NULL && $EmailCliente != NULL){
 
-		if (!isset($_POST['idCliente'])){
+				if (!isset($_POST['idCliente'])){
 
-			$result = $cliente->InsertCliente($NomeCliente, $EmailCliente, $cpfCliente, $sexo, $data_nascimento, $naturalidade, $nacionalidade, $estado_civil, $nome_mae, $idUsuario, $perm);
-		
+					$result = $cliente->InsertCliente($NomeCliente, $cpfCliente, $EmailCliente, $nome_mae, $sexo,  $data_nascimento, $naturalidade, $nacionalidade, $estado_civil, $idUsuario, $perm);
+				
 
-	}else{
-			$idCliente = $_POST['idCliente'];
-			$result = $cliente->UpdateCliente($idCliente, $NomeCliente, $EmailCliente, $cpfCliente, $sexo, $data_nascimento, $naturalidade, $nacionalidade, $estado_civil, $nome_mae, $idUsuario, $perm);
+			}else{
+					$idCliente = $_POST['idCliente'];
+					$result = $cliente->UpdateCliente($idCliente, $NomeCliente,  $cpfCliente, $EmailCliente,  $nome_mae, $sexo, $data_nascimento, $naturalidade, $nacionalidade, $estado_civil, $idUsuario, $perm);
+					
+				}
+					$_SESSION['alert'] = $result;
+					header('Location: ../../views/cliente/list.php');
+
+			}else{
+					header('Location: ../../views/cliente/list.php?alert=3');
+				}
+				
 			
+		}else{
+			header('Location: ../../views/cliente/list.php');
 		}
-			$_SESSION['alert'] = $result;
-			header('Location: ../../views/cliente/index.php');
-
-	}else{
-			header('Location: ../../views/cliente/index.php?alert=3');
-		}
-		
-	
- }else{
-	header('Location: ../../views/cliente/index.php');
-}
