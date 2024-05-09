@@ -26,10 +26,10 @@ if($idUsuario != NULL && $idFabricante != NULL && $NomeProdutor != NULL && $Tele
 		}
 
 	}else{
-		header('Location: ../../views/produtor/index.php?alert=3');
+		header('Location: ../../views/produtor/index1.php?alert=3');
 	}
 
 
  }else{
-	header('Location: ../../views/produtor/index.php');
+	header('Location: ../../views/produtor/index1.php');
 }

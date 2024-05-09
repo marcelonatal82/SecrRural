@@ -77,7 +77,7 @@ if (isset($_GET['q'])) {
                   <input type="text" name="ValVendItens" class="form-control" id="exampleInputEmail1" placeholder="ValVendItens" value="' . $resp['Itens']['ValVendItens'] . '">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">DataCompraItens</label>
+                  <label for="exampleInputEmail1">DataCompraItens**</label>
                   <input type="text" name="DataCompraItens" class="form-control" id="exampleInputEmail1" placeholder="DataCompraItens" value="' . $resp['Itens']['DataCompraItens'] . '">
                 </div>
                 <div class="form-group">

@@ -29,6 +29,7 @@ class Cliente extends Connect
 
      				echo '<br />Produtor: '. $row['NomeCliente'];
                     echo '<br />CPF: '. $row['cpfCliente'];
+                    echo '<br />Nome da Mãe: '. $row['nome_mae'];
                     echo '<br />Email: '. $row['EmailCliente'];
                     echo '<br />Estado civil: '. $row['estado_civil'];
                     echo '<br />Nome da Mae: '. $row['nome_mae'];
@@ -42,7 +43,7 @@ class Cliente extends Connect
      		}
    	}//fim -- index
 
-    function insertCliente($NomeCliente, $EmailCliente, $cpfCliente, $sexo, $data_nascimento, $naturalidade, $nacionalidade, $estado_civil, $nome_mae, $idUsuario, $perm)
+    function insertCliente($NomeCliente, $cpfCliente, $EmailCliente, $nome_mae, $sexo, $data_nascimento, $naturalidade, $nacionalidade, $estado_civil, $idUsuario, $perm)
     {
        if($perm == 1){
 
@@ -65,7 +66,7 @@ class Cliente extends Connect
         $nome_mae = mysqli_real_escape_string($this->SQL, $nome_mae);
 
 
-        $query = "INSERT INTO `cliente`(`idCliente`, `NomeCliente`, `EmailCliente`, `cpfCliente`, `sexo`, `data_nascimento`, `naturalidade`, `nacionalidade`,  `estado_civil`, `nome_mae`, `statusCliente`, `Usuario_idUsuario`) VALUES (NULL,'$NomeCliente','$EmailCliente','$cpfCliente','$sexo','$data_nascimento','$naturalidade','$nacionalidade','$estado_civil','$nome_mae',1,'$idUsuario')";
+        $query = "INSERT INTO `cliente`(`idCliente`, `NomeCliente`, `EmailCliente`, `cpfCliente`, `sexo`, `data_nascimento`, `naturalidade`, `nacionalidade`, `estado_civil`, `nome_mae`, `statusCliente`, `Usuario_idUsuario`) VALUES (NULL,'$NomeCliente','$EmailCliente','$cpfCliente','$sexo','$data_nascimento','$naturalidade','$nacionalidade','$estado_civil','$nome_mae',1,'$idUsuario')";
         $result = mysqli_query($this->SQL, $query) or die ( mysqli_error($this->SQL));
 
         if($result){
@@ -82,7 +83,28 @@ class Cliente extends Connect
       }
     }//Insert Cliente
 
-	function updateCliente($idCliente, $NomeCliente, $EmailCliente, $cpfCliente,$sexo, $naturalidade, $Data_Nascimento, $nacionalidade, $estado_civil, $nome_mae, $idUsuario, $perm){
+  /**  public function UpdateCliente($idCliente, $NomeCliente, $EmailCliente, $cpfCliente, $sexo, $data_nascimento, $estado_civil, $nome_mae, $idUsuario)
+    {
+        $this->query = "UPDATE `cliente` SET
+      `NomeCliente` = '$NomeCliente',
+      `EmailCliente`= '$EmailCliente',
+      `cpfCliente`='$cpfCliente',
+      `sexo`='$sexo',
+      `data_nascimento`='$data_nascimento',
+      `estado_civil`='$estado_civil',
+      `nome_mae`='$nome_mae',
+      `idUsuario`='$idUsuario'
+      WHERE `idCliente`= '$idCliente'";
+
+        if ($this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL))) {
+
+            header('Location: ../../views/itens/index.php?alert=1');
+        } else {
+            header('Location: ../../views/itens/index.php?alert=0');
+        }
+    }*/
+
+	function UpdateCliente($idCliente, $NomeCliente, $cpfCliente, $EmailCliente, $nome_mae, $sexo, $Data_Nascimento, $nacionalidade, $naturalidade,  $estado_civil,  $idUsuario, $perm){
 
         if($perm == 1){
 
@@ -90,9 +112,14 @@ class Cliente extends Connect
 
           $NomeCliente = mysqli_real_escape_string($this->SQL, $NomeCliente);
           $EmailCliente = mysqli_real_escape_string($this->SQL, $EmailCliente);
-          $cpfCliente = mysqli_real_escape_string($this->SQL, $cpfCliente);
+          $sexo = mysqli_real_escape_string($this->SQL, $sexo);
+          $naturalidade = mysqli_real_escape_string($this->SQL, $naturalidade);
+          $Data_Nascimento = mysqli_real_escape_string($this->SQL, $Data_Nascimento);
+          $nacionalidade = mysqli_real_escape_string($this->SQL, $nacionalidade);
+          $estado_civil = mysqli_real_escape_string($this->SQL, $estado_civil);
+          $nome_mae = mysqli_real_escape_string($this->SQL, $nome_mae);
 
-          $this->query = "UPDATE `cliente` SET `NomeCliente`='$NomeCliente',`EmailCliente`='$EmailCliente',`cpfCliente`='$cpfCliente', `Usuario_idUsuario`= '$idUsuario' WHERE `idCliente`= '$idCliente'";
+          $this->query = "UPDATE `cliente` SET `NomeCliente`='$NomeCliente',`EmailCliente`='$EmailCliente',`cpfCliente`='$cpfCliente', `sexo`='$sexo', `naturalidade`='$naturalidade', `Data_nascimento`='$Data_Nascimento', `nacionalidade`='$nacionalidade', `estado_civil`='$estado_civil', `nome_mae`='$nome_mae', `Usuario_idUsuario`= '$idUsuario' WHERE `idCliente`= '$idCliente'";
           $this->result = mysqli_query($this->SQL, $this->query) or die ( mysqli_error($this->SQL));
 
           if($this->result){
@@ -106,7 +133,41 @@ class Cliente extends Connect
         }
       }
 
-      function statusCliente($status, $idCliente){
+    public function editCliente($value)
+    {
+
+        $this->query = "SELECT * FROM `cliente` WHERE `idCliente` = '$value'";
+        $this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL));
+
+        if ($row = mysqli_fetch_array($this->result)) {
+
+            $idCliente = $row['idCliente'];
+            $NomeCliente = $row['NomeCliente'];
+            $cpfCliente = $row['cpfCliente'];
+            $nome_mae = $row['nome_mae'];
+            $EmailCliente = $row['EmailCliente'];
+            $estado_civil = $row['estado_civil'];
+            $sexo = $row['sexo'];
+            $data_nascimento = $row['data_nascimento'];
+            $naturalidade = $row['naturalidade'];
+            $nacionalidade = $row['nacionalidade'];
+
+            return $resp = array('cliente' => [
+                'idCliente' => $idCliente,
+                'NomeCliente' => $NomeCliente,
+                'cpfCliente'   => $cpfCliente,
+                'nome_mae'   => $nome_mae,
+                'EmailCliente' => $EmailCliente,
+                'estado_civil' => $estado_civil,
+                'sexo' => $sexo,
+                'data_nascimento' => $data_nascimento,
+                'naturalidade' => $naturalidade,
+                'nacionalidade' => $nacionalidade
+            ],);
+        }
+    }
+
+    function statusCliente($status, $idCliente){
 
         $this->query = "UPDATE `cliente` SET `statusCliente`= '$status' WHERE `idCliente`= '$idCliente'";
 
@@ -138,6 +199,29 @@ class Cliente extends Connect
 
       }
 
+      public function DelCliente($value)
+        {
+
+            $this->query = "SELECT * FROM `cliente` WHERE `idCliente` = '$value'";
+            $this->result = mysqli_query($this->SQL, $this->query);
+            if ($row = mysqli_fetch_array($this->result)) {
+
+                $id = $row['idCliente'];
+                $public = $row['statusCliente'];
+
+                if ($public == 1) {
+                    $p = 0;
+                } else {
+                    $p = 1;
+                }
+
+                mysqli_query($this->SQL, "UPDATE `cliente` SET `statusCliente` = '$p' WHERE `idCliente` = '$idCliente'") or die(mysqli_error($this->SQL));
+                header('Location: ../../views/cliente/index.php?alert=1');
+            } else {
+                header('Location: ../../views/cliente/index.php?alert=0');
+            }
+        }// deletar o cliente
+
       public function idcliente($cpfCliente){
 
         $this->client = "SELECT * FROM `cliente` WHERE `cpfCliente` = '$cpfCliente'";
@@ -163,6 +247,7 @@ class Cliente extends Connect
             <th>Codigo</th>
             <th>Nome</th>
             <th>CPF</th>
+            <th>Nome da Mãe</th>
             <th>Email</th>
             <th>Estado Civil</th>
             <th>Sexo</th>
@@ -214,6 +299,7 @@ class Cliente extends Connect
                 echo '</td><td>' . $row['idCliente'] . '</td>
               <td>' . $row['NomeCliente'] . '</td>
               <td>' . $row['cpfCliente'] . '</td>
+              <td>' . $row['nome_mae'] . '</td>
               <td>' . $row['EmailCliente'] . '</td>
               <td>' . $row['estado_civil'] . '</td>
               <td>' . $row['sexo'] . '</td>
@@ -223,7 +309,7 @@ class Cliente extends Connect
               <td>' . $row['dataRegCliente'] . '</td>        
           
           <td>
-                <a href="edititens.php?q=' . $row['idCliente'] . '"><i class="fa fa-edit"></i></a>
+                <a href="editcliente.php?q=' . $row['idCliente'] . '"><i class="fa fa-edit"></i></a>
           </td>
           <td>
               <!-- Button trigger modal -->
@@ -240,13 +326,13 @@ class Cliente extends Connect
 
     <!-- Modal -->
   <div>
-    <form id="delItens' . $row['idCliente'] . '" name="delItens' . $row['idCliente'] . '" action="../../App/Database/delItens.php" method="post" style="color:#000;">
+    <form id="delcliente' . $row['idCliente'] . '" name="delcliente' . $row['idCliente'] . '" action="../../App/Database/delcliente.php" method="post" style="color:#000;">
     <div class="modal fade" id="myModal' . $row['idCliente'] . '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Você tem serteza que deseja alterar o status deste item na sua lista.</h4>
+            <h4 class="modal-title" id="myModalLabel">Você tem certeza que deseja alterar o status deste item na sua lista.</h4>
           </div>
           <div class="modal-body">
             Código: ' . $row['idCliente'] . ' - ' . $row['NomeCliente'] . ' 

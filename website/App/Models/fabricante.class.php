@@ -148,13 +148,13 @@
           $this->representante = "INSERT INTO `produtor`(`idRepresentante`, `NomeRepresentante`, `TelefoneRepresentante`, `EmailRepresentante`,`repAtivo`,`repPublic`, `Fabricante_idFabricante`, `Usuario_idUser`) VALUES (NULL, '$NomeRepresentante', '$TelefoneRepresentante', '$EmailRepresentante',1 , 1,'$idFabricante', '$idUsuario')";
              
               if($this->rep = mysqli_query($this->SQL, $this->representante) or die(mysqli_error($this->SQL))){
-                  header('Location: ../../views/fabricante/index.php?alert=1'); 
+                  header('Location: ../../views/fabricante/index1.php?alert=1');
               }else{
-                  header('Location: ../../views/fabricante/index.php?alert=0');
+                  header('Location: ../../views/fabricante/index1.php?alert=0');
               } 
 
             }else{
-             header("Location: ../../views/fabricante/index.php?alert=0");
+             header("Location: ../../views/fabricante/index1.php?alert=0");
             }
             
      	}//Insert
@@ -201,9 +201,9 @@
 
         if($this->rep = mysqli_query($this->SQL, $this->representante) or die(mysqli_error($this->SQL))){
 
-                  header('Location: ../../views/fabricante/index.php?alert=5'); 
+                  header('Location: ../../views/fabricante/index1.php?alert=5');
               }else{
-                  header('Location: ../../views/fabricante/index.php?alert=0');
+                  header('Location: ../../views/fabricante/index1.php?alert=0');
               } 
 
         }
@@ -232,9 +232,9 @@
                 }
 
                 mysqli_query($this->SQL, "UPDATE `fabricante` SET `Public` = '$p' WHERE `idFabricante` = '$id'") or die(mysqli_error($this->SQL));
-                header('Location: ../../views/fabricante/index.php?alert=1');
+                header('Location: ../../views/fabricante/index1.php?alert=1');
         }else{
-                header('Location: ../../views/fabricante/index.php?alert=0');
+                header('Location: ../../views/fabricante/index1.php?alert=0');
         } 
         
   }

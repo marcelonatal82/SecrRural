@@ -37,10 +37,10 @@ if($iduser == $idUsuario && $NomeFabricante != NULL){
 			
 		}
 	}else{
-			header('Location: ../../views/fabricante/index.php?alert=3');
+			header('Location: ../../views/fabricante/index1.php?alert=3');
 		}
 		
 	
  }else{
-	header('Location: ../../views/fabricante/index.php');
+	header('Location: ../../views/fabricante/index1.php');
 }

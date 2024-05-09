@@ -35,7 +35,7 @@ if($perm != 1){
         <!-- Small boxes (Stat box) -->
         <div class="row">';
 
-  echo ' <a href="./" class="btn btn-success">Voltar</a>
+  echo ' <a href="index.php" class="btn btn-success">Voltar</a>
         <div class="row">
           <!-- left column -->
           <div class="col-md-6">
@@ -50,15 +50,19 @@ if($perm != 1){
                 <div class="box-body">
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nome Produtor</label>
-                    <input type="text" name="NomeCliente" class="form-control" id="exampleInputEmail1" placeholder="Nome Produtor">
+                    <input type="text" name="NomeCliente" class="form-control" id="exampleInputEmail1" placeholder="NomeCliente">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">CPF</label>
-                    <input type="text" name="cpfCliente" class="form-control" id="exampleInputEmail1" placeholder="CPF">
+                    <input type="text" name="cpfCliente" class="form-control" id="exampleInputEmail1" placeholder="cpfCliente">
                   </div>
                   <div class="form-group">
+                    <label for="exampleInputEmail1">E-mail</label>
+                    <input type="text" name="EmailCliente" class="form-control" id="exampleInputEmail1" placeholder="EmailCliente">
+                  </div>                            
+                  <div class="form-group">
                     <label for="exampleInputEmail1">Nome da Mãe</label>
-                    <input type="text" name="nome_mae" class="form-control" id="exampleInputEmail1" placeholder="Nome da Mãe">
+                    <input type="text" name="nome_mae" class="form-control" id="exampleInputEmail1" placeholder="nome_mae">
                   </div>
                    <div class="form-group">
                     <label for="exampleInputEmail1">Sexo</label>
@@ -66,7 +70,7 @@ if($perm != 1){
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Data de Nascimento</label>
-                    <input type="text" name="data_nascimento" class="form-control" id="exampleInputEmail1" placeholder="Data Nascimento">
+                    <input type="text" name="data_nascimento" class="form-control" id="exampleInputEmail1" placeholder="Data_nascimento">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Naturalidade</label>
@@ -78,16 +82,9 @@ if($perm != 1){
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Estado Civil</label>
-                    <input type="text" name="estado_civil" class="form-control" id="exampleInputEmail1" placeholder="Estado Civil">
+                    <input type="text" name="estado_civil" class="form-control" id="exampleInputEmail1" placeholder="estado_civil">
                   </div>                                 
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Telefone</label>
-                    <input type="text" name="telefone" class="form-control" id="exampleInputEmail1" placeholder="telefone">
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">E-mail</label>
-                    <input type="text" name="emailCliente" class="form-control" id="exampleInputEmail1" placeholder="E-mail">
-                  </div>
+
 
                   
                 <!-- /.box-body -->

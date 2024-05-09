@@ -142,7 +142,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Você tem serteza que deseja alterar o status deste item na sua lista.</h4>
+            <h4 class="modal-title" id="myModalLabel">Você tem certeza que deseja alterar o status deste item na sua lista.</h4>
           </div>
           <div class="modal-body">
             Código: ' . $row['idItens'] . ' - ' . $row['NomeEquip'] . ' - ' . $row['NomeFabricante'] . '
@@ -165,15 +165,15 @@
       }
     }
 
-    public function InsertItens($nomeimagem, $QuantItens, $ValCompItens, $ValVendItens, $DataCompraItens, $DataVenci_Itens, $Produto_CodRefProduto, $Fabricante_idFabricante, $idusuario)
+    public function InsertItens($nomeimagem, $QuantItens, $ValCompItens, $ValVendItens, $DataCompraItens, $DataVenci_Itens, $Equip_CodRefEquip, $Fabricante_idFabricante, $idusuario)
     {
 
-      $this->query = "INSERT INTO `itens`(`idItens`,`Image` ,`QuantItens`, `QuantItensVend`, `ValCompItens`, `ValVendItens`, `DataCompraItens`, `DataVenci_Itens`, `ItensAtivo`,`ItensPublic`, `Produto_CodRefProduto`, `Fabricante_idFabricante`, `Usuario_idUser`) VALUES (NULL, '$nomeimagem', '$QuantItens', 0, '$ValCompItens', '$ValVendItens', '$DataCompraItens', '$DataVenci_Itens', 1, 1, '$Produto_CodRefProduto', '$Fabricante_idFabricante', '$idusuario')";
+      $this->query = "INSERT INTO `itens`(`idItens`,`Image` ,`QuantItens`, `QuantItensVend`, `ValCompItens`, `ValVendItens`, `DataCompraItens`, `DataVenci_Itens`, `ItensAtivo`,`ItensPublic`, `Equip_CodRefEquip`, `Fabricante_idFabricante`, `Usuario_idUser`) VALUES (NULL, '$nomeimagem', '$QuantItens', 0, '$ValCompItens', '$ValVendItens', '$DataCompraItens', '$DataVenci_Itens', 1, 1, '$Equip_CodRefEquip', '$Fabricante_idFabricante', '$idusuario')";
       if ($this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL))) {
 
-        header('Location: ../../views/itens/index.php?alert=1');
+        header('Location: ../../views/itens/index1.php?alert=1');
       } else {
-        header('Location: ../../views/itens/index.php?alert=0');
+        header('Location: ../../views/itens/index1.php?alert=0');
       }
     } //InsertItens
 
@@ -208,7 +208,7 @@
       }
     }
 
-    public function updateItens($idItens, $nomeimagem, $QuantItens, $ValCompItens, $ValVendItens, $DataCompraItens, $DataVenci_Itens, $Produto_CodRefProduto, $Fabricante_idFabricante, $idusuario)
+    public function updateItens($idItens, $nomeimagem, $QuantItens, $ValCompItens, $ValVendItens, $DataCompraItens, $DataVenci_Itens, $Fabricante_idFabricante, $idusuario)
     {
       $this->query = "UPDATE `itens` SET
       `Image` = '$nomeimagem', 
@@ -217,7 +217,6 @@
       `ValVendItens`='$ValVendItens',
       `DataCompraItens`='$DataCompraItens',
       `DataVenci_Itens`='$DataVenci_Itens',
-      `Produto_CodRefProduto`='$Produto_CodRefProduto',
       `Fabricante_idFabricante`='$Fabricante_idFabricante',
       `Usuario_idUser`='$idusuario' 
       WHERE `idItens`= '$idItens'";
@@ -236,12 +235,12 @@
 
       if ($this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL))) {
 
-        header('Location: ../../views/itens/index.php?alert=1');
+        header('Location: ../../views/itens/index1.php?alert=1');
       } else {
-        header('Location: ../../views/itens/index.php?alert=0');
+        header('Location: ../../views/itens/index1.php?alert=0');
       }
     }
-
+      
     public function DelItens($value)
     {
 
@@ -259,11 +258,11 @@
         }
 
         mysqli_query($this->SQL, "UPDATE `itens` SET `ItensPublic` = '$p' WHERE `idItens` = '$id'") or die(mysqli_error($this->SQL));
-        header('Location: ../../views/itens/index.php?alert=1');
+        header('Location: ../../views/itens/index1.php?alert=1');
       } else {
-        header('Location: ../../views/itens/index.php?alert=0');
+        header('Location: ../../views/itens/index1.php?alert=0');
       }
-    }
+    }// deletar o itens 
 
     public function Ativo($value, $id)
     {

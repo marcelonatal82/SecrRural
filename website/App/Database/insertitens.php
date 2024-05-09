@@ -9,7 +9,7 @@ if (isset($_POST['upload']) == 'Cadastrar') {
 	$ValVendItens = $_POST['ValVendItens'];
 	$DataCompraItens = $_POST['DataCompraItens'];
 	$DataVenci_Itens = $_POST['DataVenci_Itens'];
-	$Equip_CodRefEquip = $_POST['CodRefEquip'];
+	//$Equip_CodRefEquip = $_POST['Equip_CodRefEquip'];
 	$Fabricante_idFabricante = $_POST['idFabricante'];
 
 	$iduser = $_POST['iduser'];
@@ -37,13 +37,13 @@ if (isset($_POST['upload']) == 'Cadastrar') {
 		if (isset($_POST['idItens'])) {
 
 			$idItens = $_POST['idItens'];
-			$itens->updateItens($idItens, $nomeimagem, $QuantItens, $ValCompItens, $ValVendItens, $DataCompraItens, $DataVenci_Itens, $Equip_CodRefEquip, $Fabricante_idFabricante, $idUsuario);
+			$itens->updateItens($idItens, $nomeimagem, $QuantItens, $ValCompItens, $ValVendItens, $DataCompraItens, $DataVenci_Itens, $Fabricante_idFabricante, $idUsuario);
 		} else {
-			$itens->InsertItens($nomeimagem, $QuantItens, $ValCompItens, $ValVendItens, $DataCompraItens, $DataVenci_Itens, $Equip_CodRefEquip, $Fabricante_idFabricante, $idUsuario);
+			$itens->InsertItens($nomeimagem, $QuantItens, $ValCompItens, $ValVendItens, $DataCompraItens, $DataVenci_Itens, $Fabricante_idFabricante, $idUsuario);
 		}
 	} else {
-		header('Location: ../../views/itens/index.php?alert=3');
+		header('Location: ../../views/itens/index1.php?alert=3');
 	}
 } else {
-	header('Location: ../../views/itens/index.php');
+	header('Location: ../../views/itens/index1.php');
 }

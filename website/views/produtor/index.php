@@ -68,7 +68,7 @@ echo '<div class="content-wrapper">
         <br/>
         <!-- /.box-body -->
         <div class="left">
-         <form action="index.php" method="post">
+         <form action="index1.php" method="post">
 
          <button name="public" type="submit" value="'.$public.'" class="btn btn-default pull-left"><i class="fa fa-plus"></i> '.$button_name. '</button></div></form>
 

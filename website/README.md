@@ -1,4 +1,4 @@
-# Controle de estoque em PHP
+# Sistema Gestão Secretaria Rural de Jatai-GO
 
 ### Requisitos mínimos
 

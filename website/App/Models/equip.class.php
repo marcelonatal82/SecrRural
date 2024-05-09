@@ -56,13 +56,13 @@
 
     <!-- Modal -->
   <div class="modal fade" id="myModal'.$row['CodRefEquip'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <form id="delequip'.$row['CodRefEquip'].'" name="delequip'.$row['CodRefEquip']. '" action="../Database/delequip.php" method="post" style="color:#000;">
+    <form id="delequip'.$row['CodRefEquip'].'" name="delequip'.$row['CodRefEquip']. '" action="../../App/Database/delequip.php" method="post" style="color:#000;">
     
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Você tem serteza que deseja alterar o status deste item na sua lista.</h4>
+            <h4 class="modal-title" id="myModalLabel">Você tem certeza que deseja alterar o status deste item na sua lista.</h4>
           </div>
           <div class="modal-body">
             Nome: ' .$row['NomeEquip'].'

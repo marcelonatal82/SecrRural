@@ -29,7 +29,7 @@ if (
 
             $_SESSION['msg'] = '<div class="alert alert-info alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <strong>Ops!</strong> O Equipamento <b>' . $result['NomeEquip'] . '</b> não pode ser vendido nessa quantidade! <br/> Quantidade em estoque <b>' . $result['estoque'] . '. </b><br/></div>';
-            header('Location: ../../views/vendas/index.php');
+            header('Location: ../../views/vendas/index1.php');
             exit;
         }
     }

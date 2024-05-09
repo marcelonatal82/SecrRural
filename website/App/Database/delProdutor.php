@@ -9,7 +9,7 @@ $id = $_POST['idProdutor'];
 $produtor->DelProdutor($id);
 
 }else{
-	header('Location: ../../views/produtor/index.php');
+	header('Location: ../../views/produtor/index1.php');
 }
 
 ?>

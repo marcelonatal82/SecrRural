@@ -31,10 +31,10 @@
    		$this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL));
         mysqli_insert_id($this->result);
         if($this->result){
-           header('Location: ../../views/usuarios/index.php?alert=1');
+           header('Location: ../../views/usuarios/index1.php?alert=1');
         
       }else{
-                header('Location: ../../views/usuarios/index.php?alert=0');
+                header('Location: ../../views/usuarios/index1.php?alert=0');
               }
 
    	}
@@ -67,10 +67,10 @@
         $this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL));
         mysqli_insert_id($this->result);
         if($this->result){
-           header('Location: ../../views/usuarios/index.php?alert=1');
+           header('Location: ../../views/usuarios/index1.php?alert=1');
         
       }else{
-                header('Location: ../../views/usuarios/index.php?alert=0');
+                header('Location: ../../views/usuarios/index1.php?alert=0');
       }
 
     }   

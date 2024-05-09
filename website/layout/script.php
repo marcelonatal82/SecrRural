@@ -581,7 +581,7 @@ $aside = '<!-- Left side column. contains the logo and sidebar -->
           </a>
           <ul class="treeview-menu">
             <!-- <li><a href="' . $url . 'cliente/"><i class="fa fa-circle-o"></i>Lista</a></li> -->
-            <li><a href="' . $url . 'cliente/list"><i class="fa fa-circle-o"></i>Listar</a></li>
+            <li><a href="' . $url . 'cliente/index.php"><i class="fa fa-circle-o"></i>Listar</a></li>
             <li><a href="' . $url . 'cliente/addcliente.php"><i class="fa fa-circle-o"></i>Cadastrar</a></li>
             
           </ul>

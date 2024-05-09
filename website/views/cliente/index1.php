@@ -1,7 +1,7 @@
 <?php
 require_once '../../App/auth.php';
 require_once '../../layout/script.php';
-require_once '../../App/Models/fabricante.class.php';
+require_once '../../App/Models/cliente.class.php';
 
 echo $head;
 echo $header;
@@ -10,11 +10,11 @@ echo '<div class="content-wrapper">
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Fabricante
+    Produtores Cadastrados
   </h1>
   <ol class="breadcrumb">
     <li><a href="../"><i class="fa fa-dashboard"></i> Home</a></li>
-    <li class="active">Fabricante</li>
+    <li class="active">Produtores</li>
   </ol>
 </section>
 
@@ -29,7 +29,7 @@ echo '<div class="content-wrapper">
     <div class="box-header">
       <i class="ion ion-clipboard"></i>
 
-      <h3 class="box-title">Lista de Fabricante</h3>
+      <h3 class="box-title">Lista de Produtores</h3>
 
       <div class="box-tools pull-right">
         <ul class="pagination pagination-sm inline">
@@ -64,8 +64,8 @@ echo '<div class="content-wrapper">
           $button_name = "Listar Desativados";
         }
 
-
-        $fabricante->index($perm, $value);
+        $cliente = new Cliente;
+        $cliente->index($value, $perm);
 
         echo '</ul>
         <br/>
@@ -73,9 +73,9 @@ echo '<div class="content-wrapper">
         <div class="left">
          <form action="index1.php" method="post">
 
-         <button name="public" type="submit" value="'.$public.'" class="btn btn-default pull-left"><i class="fa fa-plus"></i> '.$button_name.'</button></div></form>
+         <button name="public" type="submit" value="' .$public.'" class="btn btn-default pull-left"><i class="fa fa-plus"></i> '.$button_name.'</button></div></form>
 
-           <a href="addfabricante.php" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add Fabricante</a>
+           <a href="addcliente.php" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add Cliente</a>
          </div>
        </div>
        ';

@@ -94,7 +94,7 @@ echo '
           <img class="rounded" style="max-width:60%;" src="dist/img/maquinaagro.avif" alt="logo" /> 
         </div>
         <div class="col-md-12 text-center">  
-        <h1 style="text-align:center" > Olá <b>'.$username.'</b>, seja bem vindo <br> ao sistema da Secretaria de Desenvolvimento!</h1>
+        <h1 style="text-align:center" > Olá <b>'.$username.'</b>, seja bem vindo <br> ao Sistema da Secretaria de Desenvolvimento Rural!</h1>
       
   
         

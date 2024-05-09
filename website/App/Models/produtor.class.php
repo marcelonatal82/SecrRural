@@ -140,9 +140,9 @@
    		$this->query = "INSERT INTO `produtor`(`idProdutor`, `NomeProdutor`, `TelefoneProdutor`, `EmailProdutor`,`repAtivo`,`repPublic`, `Fabricante_idFabricante`, `Usuario_idUser`) VALUES (NULL, '$NomeProdutor', '$TelefoneProdutor', '$EmailProdutor', 1, 1, '$Fabricante_idFabricante', '$idUsuario')";
    		if($this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL))){
 
-   			header('Location: ../../views/produtor/index.php?alert=1');
+   			header('Location: ../../views/produtor/index1.php?alert=1');
    		}else{
-   			header('Location: ../../views/produtor/index.php?alert=0');
+   			header('Location: ../../views/produtor/index1.php?alert=0');
    		}
 
 
@@ -154,9 +154,9 @@
 
       if($this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL))){
 
-        header('Location: ../../views/produtor/index.php?alert=1');
+        header('Location: ../../views/produtor/index1.php?alert=1');
       }else{
-        header('Location: ../../views/produtor/index.php?alert=0');
+        header('Location: ../../views/produtor/index1.php?alert=0');
       }
 
     }
@@ -177,9 +177,9 @@
                 }
 
                 mysqli_query($this->SQL, "UPDATE `produtor` SET `repPublic` = '$p' WHERE `idProdutor` = '$id'") or die(mysqli_error($this->SQL));
-                header('Location: ../../views/produtor/index.php?alert=1');
+                header('Location: ../../views/produtor/index1.php?alert=1');
         }else{
-                header('Location: ../../views/produtor/index.php?alert=0');
+                header('Location: ../../views/produtor/index1.php?alert=0');
               } 
 
     }

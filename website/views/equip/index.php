@@ -10,11 +10,11 @@ echo '<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Máquinas & Equipamentos
+        Máquinarios
       </h1>
       <ol class="breadcrumb">
         <li><a href="../"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Equipamentos</li>
+        <li class="active">Maquinarios</li>
       </ol>
     </section>
 
@@ -29,7 +29,7 @@ echo '<div class="content-wrapper">
             <div class="box-header">
               <i class="ion ion-clipboard"></i>
 
-              <h3 class="box-title">Lista de Equipamentos</h3>
+              <h3 class="box-title">Lista de Maquinarios</h3>
 
               <div class="box-tools pull-right">
                 <ul class="pagination pagination-sm inline">
@@ -70,7 +70,7 @@ echo '<div class="content-wrapper">
             <div class="box-footer clearfix no-border">
             <form action="index.php" method="post">
          <button name="public" type="submit" value="'.$public.'" class="btn btn-default pull-left"><i class="fa fa-plus"></i> '.$button_name. '</button></form>
-              <a href="addequip.php" type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add Equipamentos</a>
+              <a href="addequip.php" type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add Maquinarios</a>
             </div>
           </div>
 	 

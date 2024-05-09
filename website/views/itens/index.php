@@ -61,7 +61,7 @@ echo '<div class="content-wrapper">
             <!-- /.box-body -->
            
             <div class="box-footer clearfix no-border">
-             <form action="index.php" method="post">
+             <form action="index1.php" method="post">
          <button name="public" type="submit" value="'.$public.'" class="btn btn-default pull-left"><i class="fa fa-plus"></i> '.$button_name.'</button></form>
               <a href="additens.php" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add Itens</a>
             </div>

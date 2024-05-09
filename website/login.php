@@ -27,11 +27,11 @@
 <body class="hold-transition login-page" >
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin </b>RURAL</a>
+     <a href="../../index2.html"><b>SECRETARIA DE DESENVOLVIMENTO RURAL</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+    <p class="login-box-msg">Faça login para iniciar sua sessão</p>
 
     <form action="App/session.php" method="post">
       <div class="form-group has-feedback">
@@ -46,13 +46,14 @@
         <div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
-              <input type="checkbox"> Remember Me
+              <input type="checkbox"> Lembre de mim
             </label>
           </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">
+Entrar</button>
         </div>
         <!-- /.col -->
       </div>

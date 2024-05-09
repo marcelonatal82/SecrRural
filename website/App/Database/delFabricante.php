@@ -9,7 +9,7 @@ $idFabricante = $_POST['idFabricante'];
 $fabricante->DelFabricante($idFabricante, $perm);
 
 }else{
-	header('Location: ../../views/fabricante/index.php');
+	header('Location: ../../views/fabricante/index1.php');
 }
 
 ?>

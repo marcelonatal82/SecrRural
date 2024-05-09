@@ -14,7 +14,7 @@ class Vendas extends Connect
 
     if ($perm > 2) {
       $_SESSION['msg'] =  'Erro - Você não tem permissão!';
-      header('Location: ../../views/vendas/index.php');
+      header('Location: ../../views/vendas/index1.php');
       exit();
     }
 
@@ -43,7 +43,7 @@ class Vendas extends Connect
       $_SESSION['msg'] =  '<div class="alert alert-warning">
       <strong>Ops!</strong> Produto (' . $iditem . ') não encontrado!</div>';
 
-      header('Location: ../../views/vendas/index.php');
+      header('Location: ../../views/vendas/index1.php');
       exit;
     }
   }
@@ -60,19 +60,19 @@ class Vendas extends Connect
       $_SESSION['msg'] =  '<div class="alert alert-danger alert-dismissible">
                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                          <strong>Erro!</strong> Você não tem permissão! </div>';
-      header('Location: ../../views/vendas/index.php');
+      header('Location: ../../views/vendas/index1.php');
       exit();
     } elseif ($cpfcliente == null && $cliente == null && $email == null && $cart == null) {
       $_SESSION['msg'] =  '<div class="alert alert-danger alert-dismissible">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <strong>Erro!</strong> Cadastre um Cliente! </div>';
-      header('Location: ../../views/vendas/index.php');
+      header('Location: ../../views/vendas/index1.php');
       exit();
     } elseif ($jaComprou >= 3) {
       $_SESSION['msg'] =  '<div class="alert alert-danger alert-dismissible">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <strong>Erro!</strong> O Cliente já efetuou "' . $jaComprou . '" compras este ano do produto Cód.:' . $iditem . '! </div>';
-      header('Location: ../../views/vendas/index.php');
+      header('Location: ../../views/vendas/index1.php');
       exit();
     }
 
