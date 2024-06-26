@@ -1,21 +1,21 @@
 <?php
 require_once '../auth.php';
-require_once '../../App/Models/vendas.class.php';
+require_once '../../App/Models/requisicao.class.php';
 
-if (isset($_POST['equipSubmit']) != null && $_POST['equipSubmit'] == "carrinho") {
+if (isset($_POST['maqSubmit']) != null && $_POST['maqSubmit'] == "carrinho") {
 
-	$idEquip = $_POST['idItem'];
+	$idItem = $_POST['idItem'];
 	$qtde = $_POST['qtde'];
 	$nameEquip = $_POST['nameequip'];
 
-	if (!empty($idEquip) && !empty($qtde)) {
+	if (!empty($idItem) && !empty($qtde)) {
 
-		$var = array('idItem' => $idEquip, 'qtde' => $qtde, 'nameequip' => $nameEquip);
+		$var = array('idItem' => $idItem, 'qtde' => $qtde, 'nameequip' => $nameEquip);
 
-		if (!isset($_SESSION['itens'][$idEquip])) {
-			$_SESSION['itens'][$idEquip] = $var;
+		if (!isset($_SESSION['itens'][$idItem])) {
+			$_SESSION['itens'][$idItem] = $var;
 		} else {
-			$_SESSION['itens'][$idEquip] = $var;
+			$_SESSION['itens'][$idItem] = $var;
 		}
 	}
 	$pkCount = (is_array($_SESSION['itens']) ? count($_SESSION['itens']) : 0);
@@ -26,11 +26,11 @@ if (isset($_POST['equipSubmit']) != null && $_POST['equipSubmit'] == "carrinho")
 
 		$cont = 1;
 
-		foreach ($_SESSION['itens'] as $equip) {
+		foreach ($_SESSION['itens'] as $maq) {
 
-			$idItem = $equip['idItem'];
-			$qtde = $equip['qtde'];
-			$nameEquip = $equip['nameproduto'];
+			$idItem = $maq['idItem'];
+			$qtde = $maq['qtde'];
+			$nameEquip = $maq['nameequip'];
 
 			echo '<tr>
 					<td>' . $cont . '</td>

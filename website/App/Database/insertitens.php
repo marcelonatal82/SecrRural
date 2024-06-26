@@ -42,8 +42,8 @@ if (isset($_POST['upload']) == 'Cadastrar') {
 			$itens->InsertItens($nomeimagem, $QuantItens, $ValCompItens, $ValVendItens, $DataCompraItens, $DataVenci_Itens, $Fabricante_idFabricante, $idUsuario);
 		}
 	} else {
-		header('Location: ../../views/itens/index1.php?alert=3');
+		header('Location: ../../views/itens/index.php?alert=3');
 	}
 } else {
-	header('Location: ../../views/itens/index1.php');
+	header('Location: ../../views/itens/index.php');
 }

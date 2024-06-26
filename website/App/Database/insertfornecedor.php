@@ -1,6 +1,6 @@
 <?php
 require_once '../auth.php';
-require_once '../Models/produtor.class.php';
+require_once '../Models/fornecedor.class.php';
 
 if(isset($_POST['update']) == 'Cadastrar'){
 
@@ -26,10 +26,10 @@ if($idUsuario != NULL && $idFabricante != NULL && $NomeProdutor != NULL && $Tele
 		}
 
 	}else{
-		header('Location: ../../views/produtor/index1.php?alert=3');
+		header('Location: ../../views/fornecedores/index1.php?alert=3');
 	}
 
 
  }else{
-	header('Location: ../../views/produtor/index1.php');
+	header('Location: ../../views/fornecedores/index1.php');
 }

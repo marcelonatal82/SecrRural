@@ -62,7 +62,7 @@ echo '<div class="content-wrapper">
                 </li>
               </ul>
 
-              <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+              <a href="#" class="btn btn-primary btn-block"><b>Seguir</b></a>
               
 
               <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-default">
@@ -95,7 +95,7 @@ echo '<div class="content-wrapper">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary">Salvar alterações</button>
               </div>
               </form>
             </div>
@@ -113,25 +113,25 @@ echo '<div class="content-wrapper">
           <!-- About Me Box -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">About Me</h3>
+              <h3 class="box-title">Sobre mim</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+              <strong><i class="fa fa-book margin-r-5"></i> Departamento</strong>
 
-              <p class="text-muted">
-                B.S. in Computer Science from the University of Tennessee at Knoxville
+              <p class="text-muted">                             
+                 B.S. em Ciência da Computação pela Universidade do Tennessee em Knoxville
               </p>
 
               <hr>
 
-              <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
+              <strong><i class="fa fa-map-marker margin-r-5"></i> Localização</strong>
 
-              <p class="text-muted">Malibu, California</p>
+              <p class="text-muted">Jatai, Goias</p>
 
               <hr>
 
-              <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+              <strong><i class="fa fa-pencil margin-r-5"></i> Habilidades</strong>
 
               <p>
                 <span class="label label-danger">UI Design</span>
@@ -143,7 +143,7 @@ echo '<div class="content-wrapper">
 
               <hr>
 
-              <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+              <strong><i class="fa fa-file-text-o margin-r-5"></i> Notas</strong>
 
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
             </div>
@@ -155,9 +155,9 @@ echo '<div class="content-wrapper">
         <div class="col-md-9">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#activity" data-toggle="tab">Activity</a></li>
-              <li><a href="#timeline" data-toggle="tab">Timeline</a></li>
-              <li><a href="#settings" data-toggle="tab">Settings</a></li>
+              <li class="active"><a href="#activity" data-toggle="tab">Atividades</a></li>
+              <li><a href="#timeline" data-toggle="tab">Linha do tempo</a></li>
+              <li><a href="#settings" data-toggle="tab">Configurações</a></li>
             </ul>
             <div class="tab-content">
               <div class="active tab-pane" id="activity">
@@ -169,7 +169,7 @@ echo '<div class="content-wrapper">
                           <a href="#">Jonathan Burke Jr.</a>
                           <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
                         </span>
-                    <span class="description">Shared publicly - 7:30 PM today</span>
+                    <span class="description">Compartilhado publicamente - 19h30 de hoje</span>
                   </div>
                   <!-- /.user-block -->
                   <p>
@@ -180,11 +180,11 @@ echo '<div class="content-wrapper">
                     to Charlie Sheen fans.
                   </p>
                   <ul class="list-inline">
-                    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
+                    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Compartilhar</a></li>
                     <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
                     </li>
                     <li class="pull-right">
-                      <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
+                      <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comentários
                         (5)</a></li>
                   </ul>
 

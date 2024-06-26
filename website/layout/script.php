@@ -94,7 +94,7 @@ $head = '<!DOCTYPE html>
            if(idItem != "")  
            {  
                 $.ajax({  
-                     url:"' . $url . '../App/Database/searchequip.php",  
+                     url:"' . $url . '../App/Database/searchmaq.php",  
                      method:"POST",  
                      data:{idItem:idItem},  
                      success:function(data)  
@@ -127,12 +127,12 @@ $head = '<!DOCTYPE html>
 
  $(document).ready(function(){
 
-      $("#prodSubmit").click(function()  {
-    var prodSubmit = $("#prodSubmit").val();
+      $("#maqSubmit").click(function()  {
+    var maqSubmit = $("#maqSubmit").val();
     var idItens = $("#idItem").val();
     var idItens = idItens.split(\' - \');
     var idItem = idItens[0];
-    var nameprod = idItens[1];
+    var nameequip = idItens[1];
     var qtde = $("#qtd").val();
 
     console.log(idItem);
@@ -140,7 +140,7 @@ $head = '<!DOCTYPE html>
     $.ajax({
       type: "POST",
       url: "' . $url . '../App/Database/carrinho.php",
-      data: {prodSubmit: prodSubmit, idItem: idItem, nameprod: nameprod, qtde:qtde},
+      data: {maqSubmit: maqSubmit, idItem: idItem, nameequip: nameequip, qtde:qtde},
       success: function(data){
               $(\'#listable\').fadeIn();  
               $(\'#listable\').html(data);
@@ -269,7 +269,7 @@ $header = '<header class="main-header">
     <nav class="navbar navbar-static-top">
       <!-- Sidebar toggle button-->
       <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
+        <span class="sr-only">Alternar de navegação</span>
       </a>
 
       <div class="navbar-custom-menu">
@@ -281,7 +281,7 @@ $header = '<header class="main-header">
               <span class="label label-success">4</span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 4 messages</li>
+              <li class="header">Você tem 4 mensagens</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -291,10 +291,10 @@ $header = '<header class="main-header">
                         <img src="' . $url . 'dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
-                        Support Team
+                        Equipe de suporte
                         <small><i class="fa fa-clock-o"></i> 5 mins</small>
                       </h4>
-                      <p>Why not buy a new awesome theme?</p>
+                      <p>Por que não comprar um novo tema incrível?</p>
                     </a>
                   </li>
                   <!-- end message -->
@@ -305,9 +305,9 @@ $header = '<header class="main-header">
                       </div>
                       <h4>
                         AdminLTE Design Team
-                        <small><i class="fa fa-clock-o"></i> 2 hours</small>
+                        <small><i class="fa fa-clock-o"></i> 2 Horas</small>
                       </h4>
-                      <p>Why not buy a new awesome theme?</p>
+                      <p>Por que não comprar um novo tema incrível?</p>
                     </a>
                   </li>
                   <li>
@@ -316,8 +316,8 @@ $header = '<header class="main-header">
                         <img src="' . $url . 'dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
-                        Developers
-                        <small><i class="fa fa-clock-o"></i> Today</small>
+                        Desenvolvedor
+                        <small><i class="fa fa-clock-o"></i> Hoje</small>
                       </h4>
                       <p>Why not buy a new awesome theme?</p>
                     </a>
@@ -328,8 +328,8 @@ $header = '<header class="main-header">
                         <img src="' . $url . 'dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
-                        Sales Department
-                        <small><i class="fa fa-clock-o"></i> Yesterday</small>
+                        Departamento de requisicao
+                        <small><i class="fa fa-clock-o"></i> Ontem</small>
                       </h4>
                       <p>Why not buy a new awesome theme?</p>
                     </a>
@@ -340,7 +340,7 @@ $header = '<header class="main-header">
                         <img src="' . $url . 'dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                       </div>
                       <h4>
-                        Reviewers
+                        Revisores
                         <small><i class="fa fa-clock-o"></i> 2 days</small>
                       </h4>
                       <p>Why not buy a new awesome theme?</p>
@@ -369,8 +369,8 @@ $header = '<header class="main-header">
                   </li>
                   <li>
                     <a href="#">
-                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
-                      page and may cause design problems
+                      <i class="fa fa-warning text-yellow"></i> Descrição muito longa aqui que pode não caber no
+                      página e pode causar problemas de design
                     </a>
                   </li>
                   <li>
@@ -493,20 +493,20 @@ switch ($perm) {
     break;
 }
 
-$header .= ' <small>Member since Nov. 2012</small>
+$header .= ' <small>Membro desde Maio. 2024</small>
                 </p>
               </li>
               <!-- Menu Body -->
               <li class="user-body">
                 <div class="row">
                   <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
+                    <a href="#">Seguidor</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
+                    <a href="#">locação</a>
                   </div>
                   <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
+                    <a href="#">Amigos</a>
                   </div>
                 </div>
                 <!-- /.row -->
@@ -514,10 +514,10 @@ $header .= ' <small>Member since Nov. 2012</small>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="' . $url . 'usuarios/profile.php" class="btn btn-default btn-flat">Profile</a>
+                  <a href="' . $url . 'usuarios/profile.php" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="' . $url . 'destroy.php" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="' . $url . 'destroy.php" class="btn btn-default btn-flat">Sair</a>
                 </div>
               </li>
             </ul>
@@ -569,20 +569,21 @@ $aside = '<!-- Left side column. contains the logo and sidebar -->
           
         </li>
         
-<!-- Equipamentos -->
+<!-- Maquinarios -->
       
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i>
-            <span>Cadastro Produtores</span>
+            <span>PRODUTORES</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
+            <li><a href="' . $url . 'cliente/addcliente.php"><i class="fa fa-circle-o"></i>Add Produtor</a></li>
             <!-- <li><a href="' . $url . 'cliente/"><i class="fa fa-circle-o"></i>Lista</a></li> -->
             <li><a href="' . $url . 'cliente/index.php"><i class="fa fa-circle-o"></i>Listar</a></li>
-            <li><a href="' . $url . 'cliente/addcliente.php"><i class="fa fa-circle-o"></i>Cadastrar</a></li>
+            
             
           </ul>
         </li>
@@ -590,14 +591,14 @@ $aside = '<!-- Left side column. contains the logo and sidebar -->
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i>
-            <span>Cadastro de Maquinarios</span>
+            <span>MAQUINÁRIOS</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="' . $url . 'equip/"><i class="fa fa-circle-o"></i>Maquinarios</a></li>
-            <li><a href="' . $url . 'equip/addequip.php"><i class="fa fa-circle-o"></i>Add Maquinarios</a></li>
+            <li><a href="' . $url . 'maq/"><i class="fa fa-circle-o"></i>Maquinários</a></li>
+            <li><a href="' . $url . 'maq/addmaq.php"><i class="fa fa-circle-o"></i>Add Maquinários</a></li>
             <li><a href="' . $url . 'itens/"><i class="fa fa-circle-o"></i>Itens</a></li>
              <li><a href="' . $url . 'itens/totalitens.php"><i class="fa fa-circle-o"></i>Total Itens</a></li>
             <li><a href="' . $url . 'itens/additens.php"><i class="fa fa-circle-o"></i>Add Itens</a></li>
@@ -607,21 +608,21 @@ $aside = '<!-- Left side column. contains the logo and sidebar -->
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i>
-            <span>Cadastro Fornecedores</span>
+            <span>FORNECEDORES</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="' . $url . 'produtor/"><i class="fa fa-circle-o"></i>Produtor</a></li>            
-            <li><a href="' . $url . 'produtor/addprodutor.php"><i class="fa fa-circle-o"></i>Add Produtores</a></li>
+            <li><a href="' . $url . 'fornecedores/"><i class="fa fa-circle-o"></i>Fornecedores</a></li>            
+            <li><a href="' . $url . 'fornecedores/addfornecedor.php"><i class="fa fa-circle-o"></i>Add Fornecedor</a></li>
           </ul>
         </li>
 
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i>
-            <span>Fabricante</span>
+            <span>FABRICANTE</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -636,13 +637,13 @@ $aside = '<!-- Left side column. contains the logo and sidebar -->
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i>
-            <span>Relatorios</span>
+            <span>RELATÓRIOS</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="' . $url . 'relatorios/"><i class="fa fa-circle-o"></i>Relatorios Produtos</a></li>
+            <li><a href="' . $url . 'relatórios/"><i class="fa fa-circle-o"></i>Relatórios</a></li>
             <!--<li><a href="' . $url . 'relatorios/compclientes.php"><i class="fa fa-circle-o"></i>Relatorios Clientes</a></li>-->
             
           </ul>
@@ -651,7 +652,7 @@ $aside = '<!-- Left side column. contains the logo and sidebar -->
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i>
-            <span>Usuários</span>
+            <span>USUARIOS</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -665,19 +666,19 @@ $aside = '<!-- Left side column. contains the logo and sidebar -->
         <li class="treeview">
           <a href="#">
             <i class="fa fa-table"></i>
-            <span>Requisições</span>
+            <span>SOLICITAÇÕES</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="' . $url . 'vendas/"><i class="fa fa-circle-o"></i>Vendas</a></li>
+            <li><a href="' . $url . 'requisicao/"><i class="fa fa-circle-o"></i>Requisição</a></li>
             
           </ul>
         </li>
 
         
-        <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentação</span></a></li>
+        <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>DOCUMENTAÇÃO</span></a></li>
         <li class="header">ETIQUETAS</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Importante</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Aviso</span></a></li>
@@ -706,7 +707,7 @@ $footer = '<footer class="main-footer">
     <div class="tab-content">
       <!-- Home tab content -->
       <div class="tab-pane" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <h3 class="control-sidebar-heading">Atividades Recentes</h3>
         <ul class="control-sidebar-menu">
           <li>
             <a href="javascript:void(0)">

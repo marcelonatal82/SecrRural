@@ -11,7 +11,7 @@ echo $aside;
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Relatorio de vendas - Clientes
+      Relatorio de Solicitações - Clientes
     </h1>
     <ol class="breadcrumb">
       <li><a href="../"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -31,7 +31,7 @@ echo $aside;
         <div class="box-header">
           <i class="ion ion-clipboard"></i>
 
-          <h3 class="box-title">Produtos</h3>
+          <h3 class="box-title">Maquinarios</h3>
         </div>
 
         <!-- /.box-header -->
@@ -48,7 +48,7 @@ echo $aside;
                       <option value="">Selecione um Produto</option>
                       <?php
                       $relatorio = new Relatorio();
-                      $resps = $relatorio->selectProduto($perm);
+                      $resps = $relatorio->selectCliente($perm);
                       $resps = json_decode($resps, true);
                       foreach ($resps as $resp) {
                         echo '<option value="' . $resp['CodRefProduto'] . '">' . $resp['NomeProduto'] . '</option>';

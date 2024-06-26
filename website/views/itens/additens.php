@@ -1,7 +1,7 @@
 <?php
 require_once '../../App/auth.php';
 require_once '../../layout/script.php';
-require_once '../../App/Models/equip.class.php';
+require_once '../../App/Models/maq.class.php';
 require_once '../../App/Models/fabricante.class.php';
 
 echo $head;
@@ -11,11 +11,11 @@ echo '<div class="content-wrapper">';
 echo '<!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Adicionar <small>Equipamentos</small>
+        Adicionar <small>Maquinarios</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="../"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Equipamentos</li>
+        <li class="active">Maquinarios</li>
       </ol>
     </section>
 
@@ -31,7 +31,7 @@ echo '
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Equipamentos</h3>
+              <h3 class="box-title">Maquinario</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -39,13 +39,13 @@ echo '
             <form role="form" enctype="multipart/form-data" action="../../App/Database/insertitens.php" method="POST" autocomplete="off">
               <div class="box-body">
               	<div class="form-group">
-                  <label for="exampleInputEmail1">Nome do Equipamento</label>
+                  <label for="exampleInputEmail1">Nome do Maquinario</label>
                   
 
 
             <select class="form-control" name="codEquip">
             ';
-$equip->listEquip();
+$maq->listEquip();
 echo '</select>
             </div>
 

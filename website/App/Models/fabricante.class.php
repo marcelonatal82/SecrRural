@@ -145,7 +145,7 @@
         
           if($idFabricante > 0){
 
-          $this->representante = "INSERT INTO `produtor`(`idRepresentante`, `NomeRepresentante`, `TelefoneRepresentante`, `EmailRepresentante`,`repAtivo`,`repPublic`, `Fabricante_idFabricante`, `Usuario_idUser`) VALUES (NULL, '$NomeRepresentante', '$TelefoneRepresentante', '$EmailRepresentante',1 , 1,'$idFabricante', '$idUsuario')";
+          $this->representante = "INSERT INTO `fornecedores`(`idRepresentante`, `NomeRepresentante`, `TelefoneRepresentante`, `EmailRepresentante`,`repAtivo`,`repPublic`, `Fabricante_idFabricante`, `Usuario_idUser`) VALUES (NULL, '$NomeRepresentante', '$TelefoneRepresentante', '$EmailRepresentante',1 , 1,'$idFabricante', '$idUsuario')";
              
               if($this->rep = mysqli_query($this->SQL, $this->representante) or die(mysqli_error($this->SQL))){
                   header('Location: ../../views/fabricante/index1.php?alert=1');

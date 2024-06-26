@@ -1,7 +1,7 @@
 <?php
 require_once '../../App/auth.php';
 require_once '../../layout/script.php';
-require_once '../../App/Models/equip.class.php';
+require_once '../../App/Models/maq.class.php';
 require_once '../../App/Models/fabricante.class.php';
 require_once '../../App/Models/itens.class.php';
 
@@ -100,7 +100,7 @@ if (isset($_GET['q'])) {
 
               <div class="box-footer">
                 <button type="submit" name="upload" class="btn btn-primary" value="Cadastrar">Cadastrar</button>
-                <a class="btn btn-danger" href="../equip">Cancelar</a>
+                <a class="btn btn-danger" href="../maq">Cancelar</a>
               </div>
             </form>
           </div>

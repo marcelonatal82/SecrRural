@@ -5,7 +5,7 @@ if (isset($_SESSION['notavd']) != NULL) {
 
   require_once '../../layout/script.php';
   require_once '../../App/Models/cliente.class.php';
-  require_once '../../App/Models/vendas.class.php';
+  require_once '../../App/Models/requisicao.class.php';
 
   echo $head;
   echo $header;
@@ -15,7 +15,7 @@ if (isset($_SESSION['notavd']) != NULL) {
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Vendas
+        Locação
       </h1>
       <ol class="breadcrumb">
         <li><a href="../"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -90,7 +90,7 @@ if (isset($_SESSION['notavd']) != NULL) {
 
                         <tr>
                           <td>Cod.</td>
-                          <td>Produto</td>
+                          <td>Equipamento</td>
                           <td>Fabricante</td>
                           <td>Qtde</td>
                           <td>Valor Uni.</td>
@@ -103,12 +103,12 @@ if (isset($_SESSION['notavd']) != NULL) {
                           $vendas = new vendas;
                           $dadosItem = $vendas->dadosItem($key["iditem"]);
 
-                          $nomeProduto = $dadosItem['NomeProduto'];
+                          $nomeEquip = $dadosItem['NomeEquip'];
                           $NomeFabricante = $dadosItem['NomeFabricante'];
 
                           echo "<tr>";
                           echo '<td>' . $key["iditem"] .    '</td>';
-                          echo '<td>' . $nomeProduto .      '</td>';
+                          echo '<td>' . $nomeEquip .      '</td>';
                           echo '<td>' . $NomeFabricante .   '</td>';
                           echo '<td>' . $key["quantitens"] . '</td>';
                           echo '<td>';

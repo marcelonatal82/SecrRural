@@ -6,12 +6,12 @@
 
    require_once 'connect.php';
 
-   class Equip extends Connect
+   class maq extends Connect
    {
    	
    	public function index($value)
    	{
-   		$this->query = "SELECT * FROM `equip` WHERE `PublicEquip` = '$value'";
+   		$this->query = "SELECT * FROM `maq` WHERE `PublicEquip` = '$value'";
    		$this->result = mysqli_query($this->SQL, $this->query) or die ( mysqli_error($this->SQL));
 
    		if($this->result){
@@ -30,7 +30,7 @@
           <form class="label" name="ativ'.$row['CodRefEquip'].'" action="../../App/Database/action.php" method="post">
                     <input type="hidden" name="id" id="id" value="'.$row['CodRefEquip'].'">
                     <input type="hidden" name="status" id="status" value="'.$row['Ativo'].'">
-                    <input type="hidden" name="tabela" id="tabela" value="equip">                  
+                    <input type="hidden" name="tabela" id="tabela" value="maq">                  
                     <input type="checkbox" id="status" name="status" ';
 
                      if($row['Ativo'] == 1){ echo 'checked'; } 
@@ -56,7 +56,7 @@
 
     <!-- Modal -->
   <div class="modal fade" id="myModal'.$row['CodRefEquip'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <form id="delequip'.$row['CodRefEquip'].'" name="delequip'.$row['CodRefEquip']. '" action="../../App/Database/delequip.php" method="post" style="color:#000;">
+    <form id="delmaq'.$row['CodRefEquip'].'" name="delmaq'.$row['CodRefEquip']. '" action="../Database/delmaq.php" method="post" style="color:#000;">
     
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -80,7 +80,7 @@
 
       <!-- Modal UPDATE -->
   <div class="modal fade" id="myModalup'.$row['CodRefEquip'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <form id="Upequip'.$row['CodRefEquip'].'" name="Upequip'.$row['CodRefEquip'].'" action="../../App/Database/insertequip.php" method="post" style="color:#000;">
+    <form id="Upequip'.$row['CodRefEquip'].'" name="Upequip'.$row['CodRefEquip']. '" action="../Database/insertmaq.php" method="post" style="color:#000;">
     
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -90,7 +90,7 @@
           </div>
           <div class="modal-body">
             Nome Atual:
-            <input type="text" id="nomeEquip" name="nomeEquip" value="'.$row['NomeEquip'].'">
+            <input type="text" id="nomeEquip" name="nomeEquip" value="' .$row['NomeEquip'].'">
           </div>
           <input type="hidden" id="id" name="id" value="'.$row['CodRefEquip'].'">
           
@@ -111,9 +111,9 @@
 
   }
 
-  public function listProdutos(){
+  public function listEquip(){
 
-   $this->query = "SELECT *FROM `equip` WHERE `Ativo` = 1 AND `PublicEquip` = 1";
+   $this->query = "SELECT *FROM `maq` WHERE `Ativo` = 1 AND `PublicEquip` = 1";
    $this->result = mysqli_query($this->SQL, $this->query) or die ( mysqli_error($this->SQL));
 
    if($this->result){
@@ -132,22 +132,22 @@
 
   public function InsertEquip($nomeEquip, $idUsuario){
 
-   $this->query = "INSERT INTO `equip`(`CodRefEquip`, `NomeEquip`,`Ativo` ,`PublicEquip` , `Usuario_idUser`) VALUES (NULL,'$nomeEquip', 1 , 1 ,'$idUsuario')";
+   $this->query = "INSERT INTO `maq`(`CodRefEquip`, `NomeEquip`,`Ativo` ,`PublicEquip` , `Usuario_idUser`) VALUES (NULL,'$nomeEquip', 1 , 1 ,'$idUsuario')";
    if($this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL))){
 
-    header('Location: ../../views/equip/index.php?alert=1');
+    header('Location: ../../views/maq/index.php?alert=1');
   }else{
-    header('Location: ../../views/equip/index.php?alert=0');
+    header('Location: ../../views/maq/index.php?alert=0');
   }
   }
 
   public function UpdateEquip($id, $nomeEquip, $idUsuario)
   {
-      if(mysqli_query($this->SQL, "UPDATE `equip` SET `NomeEquip` = '$nomeEquip', `Usuario_idUser` = '$idUsuario' WHERE `CodRefEquip` = '$id'") or die(mysqli_error($this->SQL))){
+      if(mysqli_query($this->SQL, "UPDATE `maq` SET `NomeEquip` = '$nomeEquip', `Usuario_idUser` = '$idUsuario' WHERE `CodRefEquip` = '$id'") or die(mysqli_error($this->SQL))){
 
-                header('Location: ../../views/equip/index.php?alert=1');
+                header('Location: ../../views/maq/index.php?alert=1');
       }else{
-                header('Location: ../../views/equip/index.php?alert=0');
+                header('Location: ../../views/maq/index.php?alert=0');
               }
     
   }
@@ -155,7 +155,7 @@
   public function DelEquip($value)
       {
 
-        $this->query = "SELECT * FROM `equip` WHERE `CodRefEquip` = '$value'";
+        $this->query = "SELECT * FROM `maq` WHERE `CodRefEquip` = '$value'";
         $this->result = mysqli_query($this->SQL, $this->query);
         if($row = mysqli_fetch_array($this->result)){
 
@@ -168,10 +168,10 @@
                   $p = 1;
                 }
 
-                mysqli_query($this->SQL, "UPDATE `equip` SET `PublicEquip` = '$p' WHERE `CodRefEquip` = '$id'") or die(mysqli_error($this->SQL));
-                header('Location: ../../views/equip/index.php?alert=1');
+                mysqli_query($this->SQL, "UPDATE `maq` SET `PublicEquip` = '$p' WHERE `CodRefEquip` = '$id'") or die(mysqli_error($this->SQL));
+                header('Location: ../../views/maq/index.php?alert=1');
         }else{
-                header('Location: ../../views/equip/index.php?alert=0');
+                header('Location: ../../views/maq/index.php?alert=0');
               }
     } 
 
@@ -180,14 +180,14 @@
 
     if($value == 0){ $v = 1; }else{ $v = 0; }
 
-    $this->query = "UPDATE `equip` SET `Ativo` = '$v' WHERE `CodRefEquip` = '$id'";
+    $this->query = "UPDATE `maq` SET `Ativo` = '$v' WHERE `CodRefEquip` = '$id'";
     $this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL));
 
-    header('Location: ../../views/equip/');
+    header('Location: ../../views/maq/');
 
 
     }//Ativo
 
   }
 
-  $equip = new Equip;
+  $maq = new maq;

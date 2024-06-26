@@ -9,5 +9,5 @@ if (isset($_GET['remover']) && $_GET['remover'] == "carrinho") {
 
 	unset($_SESSION['itens'][$idProduto]);
 
-	echo "<meta http-equiv='refresh' content='0;URL=../../views/vendas/'>";
+	echo "<meta http-equiv='refresh' content='0;URL=../../views/requisicao/'>";
 }

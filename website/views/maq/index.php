@@ -1,7 +1,7 @@
 <?php
 require_once '../../App/auth.php';
 require_once '../../layout/script.php';
-require_once '../../App/Models/equip.class.php';
+require_once '../../App/Models/maq.class.php';
 
 echo $head;
 echo $header;
@@ -10,11 +10,11 @@ echo '<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Máquinarios
+        Maquinários
       </h1>
       <ol class="breadcrumb">
         <li><a href="../"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Maquinarios</li>
+        <li class="active">Maquinários</li>
       </ol>
     </section>
 
@@ -29,7 +29,7 @@ echo '<div class="content-wrapper">
             <div class="box-header">
               <i class="ion ion-clipboard"></i>
 
-              <h3 class="box-title">Lista de Maquinarios</h3>
+              <h3 class="box-title">Lista de Maquinários</h3>
 
               <div class="box-tools pull-right">
                 <ul class="pagination pagination-sm inline">
@@ -62,7 +62,7 @@ echo '<div class="content-wrapper">
           $public = 0;
           $button_name = "Inativos";
         }
-               $equip->index($value);
+               $maq->index($value);
               
         echo '</ul>
             </div>
@@ -70,7 +70,7 @@ echo '<div class="content-wrapper">
             <div class="box-footer clearfix no-border">
             <form action="index.php" method="post">
          <button name="public" type="submit" value="'.$public.'" class="btn btn-default pull-left"><i class="fa fa-plus"></i> '.$button_name. '</button></form>
-              <a href="addequip.php" type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add Maquinarios</a>
+              <a href="addmaq.php" type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add Maquinarios</a>
             </div>
           </div>
 	 

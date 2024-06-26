@@ -71,7 +71,7 @@ if($perm == 1){
 
                  <div class="box-footer">
                 <button type="submit" name="update" class="btn btn-primary" value="Cadastrar">Cadastrar</button>
-                <a class="btn btn-danger" href="../equip">Cancelar</a>
+                <a class="btn btn-danger" href="../maq">Cancelar</a>
               </div>
             </form>
             

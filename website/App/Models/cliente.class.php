@@ -232,6 +232,7 @@ class Cliente extends Connect
                 return $idCliente = $row['idCliente'];
             }
     }
+
     public function index2($value)
     {
         $this->query = "SELECT * FROM `cliente`";

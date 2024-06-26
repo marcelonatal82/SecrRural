@@ -1,6 +1,6 @@
 <?php
 require_once '../auth.php';
-require_once '../Models/produtor.class.php';
+require_once '../Models/fornecedor.class.php';
 
 if(isset($_POST['update']) == 'Cadastrar'){
 
@@ -9,7 +9,7 @@ $id = $_POST['idProdutor'];
 $produtor->DelProdutor($id);
 
 }else{
-	header('Location: ../../views/produtor/index1.php');
+	header('Location: ../../views/fornecedores/index1.php');
 }
 
 ?>

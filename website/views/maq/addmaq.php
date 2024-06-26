@@ -33,13 +33,13 @@ echo ' <a href="./" class="btn btn-success">Voltar</a>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="../../App/Database/insertequip.php" method="POST">
+            <form role="form" action="../../App/Database/insertmaq.php" method="POST">
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nome do Maquinario</label>
                   <input type="text" name="nomeEquip" class="form-control" id="exampleInputEmail1" placeholder="Nome Maquinario">
                 </div>
-                 <input type="hidden" name="iduser" value="'.$idUsuario. '">
+                 <input type="hidden" name="iduser" value="' .$idUsuario. '">
               <!-- /.box-body -->
 
               <div class="box-footer">

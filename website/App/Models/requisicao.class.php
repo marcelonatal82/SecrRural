@@ -1,12 +1,12 @@
 <?php
 
 /**
- * Vendas
+ * Requisições
  */
 
 require_once 'connect.php';
 
-class Vendas extends Connect
+class requisicao extends Connect
 {
 
   public function itensVerify($iditem, $quant, $perm)
@@ -14,11 +14,11 @@ class Vendas extends Connect
 
     if ($perm > 2) {
       $_SESSION['msg'] =  'Erro - Você não tem permissão!';
-      header('Location: ../../views/vendas/index1.php');
+      header('Location: ../../views/requisicao/index.php');
       exit();
     }
 
-    $query = "SELECT * FROM `itens`, `produtos` WHERE `idItens` = '$iditem' AND `Produto_CodRefProduto` = `CodRefProduto`";
+    $query = "SELECT * FROM `itens`, `maq` WHERE `idItens` = '$iditem' AND `Equip_CodRefEquip` = `CodRefEquip`";
     $result = mysqli_query($this->SQL, $query) or die(mysqli_error($this->SQL));
     $total = mysqli_num_rows($result);
 
@@ -32,10 +32,10 @@ class Vendas extends Connect
 
         if ($q >= $quantotal) {
 
-          return array('status' => '1', 'NomeProduto' => $row['NomeProduto'],);
+          return array('status' => '1', 'NomeEquip' => $row['NomeEquip'],);
         } else {
           $estoque = $q - $v;
-          return array('status' => '0', 'NomeProduto' => $row['NomeProduto'], 'estoque' => $estoque);
+          return array('status' => '0', 'NomeEquip' => $row['NomeEquip'], 'estoque' => $estoque);
         }
       }
     } else {
@@ -43,7 +43,7 @@ class Vendas extends Connect
       $_SESSION['msg'] =  '<div class="alert alert-warning">
       <strong>Ops!</strong> Produto (' . $iditem . ') não encontrado!</div>';
 
-      header('Location: ../../views/vendas/index1.php');
+      header('Location: ../../views/requisicao/index.php');
       exit;
     }
   }
@@ -52,27 +52,27 @@ class Vendas extends Connect
   {
 
     $cpfcliente = intval(Connect::limpaCPF_CNPJ($cpfcliente));
-    $idCliente = Vendas::idCliente($cpfcliente); // Verifica se o cliente existe no DB.
+    $idCliente = requisicoes::idCliente($cpfcliente); // Verifica se o cliente existe no DB.
 
-    $jaComprou = (new Vendas)->jaComprou($idCliente, $iditem, $block);
+    $jaComprou = (new requisicoes)->jaComprou($idCliente, $iditem, $block);
 
     if ($perm > 2) {
       $_SESSION['msg'] =  '<div class="alert alert-danger alert-dismissible">
                          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                          <strong>Erro!</strong> Você não tem permissão! </div>';
-      header('Location: ../../views/vendas/index1.php');
+      header('Location: ../../views/requisicao/index.php');
       exit();
     } elseif ($cpfcliente == null && $cliente == null && $email == null && $cart == null) {
       $_SESSION['msg'] =  '<div class="alert alert-danger alert-dismissible">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <strong>Erro!</strong> Cadastre um Cliente! </div>';
-      header('Location: ../../views/vendas/index1.php');
+      header('Location: ../../views/requisicao/index.php');
       exit();
     } elseif ($jaComprou >= 3) {
       $_SESSION['msg'] =  '<div class="alert alert-danger alert-dismissible">
       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
       <strong>Erro!</strong> O Cliente já efetuou "' . $jaComprou . '" compras este ano do produto Cód.:' . $iditem . '! </div>';
-      header('Location: ../../views/vendas/index1.php');
+      header('Location: ../../views/requisicao/index.php');
       exit();
     }
 
@@ -106,7 +106,7 @@ class Vendas extends Connect
           }
 
 
-          $query = "INSERT INTO `vendas`(`idvendas`, `quantitens`, `valor`, `iditem`, `cart`, `cliente_idCliente`, `idusuario`) VALUES (NULL, '$quant', '$valor', '$iditem', '$cart', '$idCliente', '$idUsuario')";
+          $query = "INSERT INTO `requisicao`(`idvendas`, `quantitens`, `valor`, `iditem`, `cart`, `cliente_idCliente`, `idusuario`) VALUES (NULL, '$quant', '$valor', '$iditem', '$cart', '$idCliente', '$idUsuario')";
           if ($result = mysqli_query($this->SQL, $query) or die(mysqli_error($this->SQL))) {
 
 
@@ -132,7 +132,7 @@ class Vendas extends Connect
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <strong>Erro!</strong> Venda não efetuada! </div>';
 
-            header('Location: ../../views/vendas/');
+            header('Location: ../../views/requisicao/');
             exit();
           }
         } else {
@@ -142,11 +142,11 @@ class Vendas extends Connect
           $_SESSION['msg'] =  '<div class="alert alert-warning alert-dismissible">
                       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                       <strong>Ops!</strong> Quantidade maior do que em estoque! </br> Quantidade em estoque: <b>' . $estoque . '</b></div>';
-          header('Location: ../../views/vendas/');
+          header('Location: ../../views/requisicao/');
           exit();
         }
 
-        header('Location: ../../views/vendas/notavd.php');
+        header('Location: ../../views/requisicao/notavd.php');
       }
 
 
@@ -154,7 +154,7 @@ class Vendas extends Connect
 
     } else {
       $_SESSION['alert'] = 0;
-      header('Location: ../../views/vendas/');
+      header('Location: ../../views/requisicao/');
     }
   } // itensVendidos
 
@@ -175,14 +175,14 @@ class Vendas extends Connect
   public function itemNome($idItens)
   {
 
-    $query = "SELECT * FROM `produtos` WHERE `CodRefProduto` IN (SELECT `Produto_CodRefProduto` FROM `itens` WHERE `idItens` = '$idItens' AND `ItensAtivo` = 1 AND `ItensPublic` = 1)";
+    $query = "SELECT * FROM `maq` WHERE `CodRefEquip` IN (SELECT `Equip_CodRefEquip` FROM `itens` WHERE `idItens` = '$idItens' AND `ItensAtivo` = 1 AND `ItensPublic` = 1)";
 
     $result = mysqli_query($this->SQL, $query)  or die(mysqli_error($this->SQL));
 
     $row = mysqli_fetch_array($result);
 
-    if ($row['NomeProduto'] != NULL) {
-      $resp = $row['NomeProduto'];
+    if ($row['NomeEquip'] != NULL) {
+      $resp = $row['NomeEquip'];
     } else {
       $resp = NULL;
     }
@@ -193,7 +193,7 @@ class Vendas extends Connect
   public function notavd($cart)
   {
 
-    $query = "SELECT * FROM `vendas` WHERE `cart` = '$cart' ";
+    $query = "SELECT * FROM `requisicao` WHERE `cart` = '$cart' ";
 
     if ($result = mysqli_query($this->SQL, $query)  or die(mysqli_error($this->SQL))) {
 
@@ -208,7 +208,7 @@ class Vendas extends Connect
   public function dadosItem($idItem)
   {
 
-    $query = "SELECT * FROM `fabricante`, `produtos`, `itens` WHERE `idItens` = '$idItem' AND `Produto_CodRefProduto` = `CodRefProduto` AND `Fabricante_idFabricante` = `idFabricante`";
+    $query = "SELECT * FROM `fabricante`, `maq`, `itens` WHERE `idItens` = '$idItem' AND `Equip_CodRefEquip` = `CodRefEquip` AND `Fabricante_idFabricante` = `idFabricante`";
 
     if ($result = mysqli_query($this->SQL, $query)  or die(mysqli_error($this->SQL))) {
 
@@ -228,7 +228,7 @@ class Vendas extends Connect
       $dataIn = $dataAno;
       $dataFim = date('Y-m-d H:i:s');
 
-      $query = "SELECT COUNT(*) AS TOTAL FROM `vendas` WHERE `cliente_idCliente` = '$idCliente' AND (`datareg` BETWEEN '$dataIn' AND '$dataFim' AND `iditem` = '$idItem')";
+      $query = "SELECT COUNT(*) AS TOTAL FROM `requisicao` WHERE `cliente_idCliente` = '$idCliente' AND (`datareg` BETWEEN '$dataIn' AND '$dataFim' AND `iditem` = '$idItem')";
       $result = mysqli_query($this->SQL, $query);
 
       $row = mysqli_fetch_assoc($result);

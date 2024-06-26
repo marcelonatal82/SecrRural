@@ -1,7 +1,7 @@
 <?php
 require_once '../../App/auth.php';
 require_once '../../layout/script.php';
-require_once '../../App/Models/vendas.class.php';
+require_once '../../App/Models/requisicao.class.php';
 require_once '../../App/Models/cliente.class.php';
 
 echo $head;
@@ -83,7 +83,7 @@ if (isset($_POST['CPF'])) {
 </div>
 <!-- Cliente list FIM -->
 
-<form id="form2" action="../../App/Database/insertVendas.php" method="POST">
+<form id="form2" action="../../App/Database/insertRequisicao.php" method="POST">
   <div class="box-body">
     <div class="row">
       <div class="col-md-6">
@@ -130,7 +130,7 @@ if (isset($_POST['CPF'])) {
       </div>
 
       <div class="form-group col-xs-12 col-sm-4">
-        <button type="button" id="prodSubmit" name="equipSubmit" onclick="equipSubmit;" value="carrinho" class="btn btn-primary col-xs-12">Registrar</button>
+        <button type="button" id="maqSubmit" name="maqSubmit" onclick="maqSubmit" value="carrinho" class="btn btn-primary col-xs-12">Registrar</button>
       </div>
     </div>
 
@@ -139,7 +139,7 @@ if (isset($_POST['CPF'])) {
       <tr>
         <th style="width: 10px">#</th>
         <th>Cod.</th>
-        <th>Produto</th>
+        <th>Equipamentos</th>
         <th>Qtde</th>
         <th style="width:40px" title="Remover">Del</th>
       </tr>
@@ -148,19 +148,7 @@ if (isset($_POST['CPF'])) {
       <tbody id="listable">
 
         <?php
-        /*
-	Existe uma atualização no PHP 7.2 que modifica o uso do "count" if(count($_SESSION['itens']) == 0), 
-	no caso de você esta utilizando está versão ou superior,
-	basta subistituir por "isset" ficando 
-	====================================================
-		if(isset($_SESSION['itens']) == 0)... 
-	====================================================
-	ou modificar o código ficando assim
-	====================================================
-		$pkCount = (isset($_SESSION['itens']) ? count($_SESSION['itens']) : 0);
-		if ($pkCount == 0) {...
-	====================================================
-	*/
+
         $pkCount = (isset($_SESSION['itens']) ? count($_SESSION['itens']) : 0);
         if ($pkCount == 0) { // Alterado conforme descrito
           echo '<tr>
@@ -172,20 +160,21 @@ if (isset($_POST['CPF'])) {
 
           $cont = 1;
 
-          foreach ($_SESSION['itens'] as $equip) {
-            //$var = explode(' - ', $produtos);
-            $idItem = $equip['idItem'];
-            $qtde = $equip['qtde'];
-            $nameprodutor = $equip['nameprodutor'];
+          foreach ($_SESSION['itens'] as $maq) {
+            $idItem = $maq['idItem'];
+            $qtde = $maq['qtde'];
+            $nameequip = $maq['nameequip'];
 
 
             echo '<tr>
                 <td>' . $cont . '</td>
 			<td>' . $idItem . '</td>
-			<td>' . $nameprodutor . '</td>
-			<td><input type="hidden" id="idItem" name="idItem[' . $idItem . ']" value="' . $idItem . '" />
+			<td>' . $nameequip . '</td>
+			<td>
+			<input type="hidden" id="idItem" name="idItem[' . $idItem . ']" value="' . $idItem . '" />
 			<input type="hidden" id="qtd" name="qtd[' . $idItem . ']" value="' . $qtde . '" /> ' . $qtde . '
-			<a href="../../App/Database/remover.php?remover=carrinho&id=' . $idItem . '"><i class="fa fa-trash text-danger"></i></a></td>
+			<td><a href="../../App/Database/remover.php?remover=carrinho&id=' . $idItem . '"><i class="fa fa-trash text-danger"></i></a></td>
+			</td>
 			</td>
                 </tr>';
             $cont = $cont + 1;
@@ -205,7 +194,7 @@ if (isset($_POST['CPF'])) {
   <div class="col-md-12">
     <div class="box-footer">
       <button type="submit" name="comprar" class="btn btn-primary" value="Cadastrar">Comprar</button>
-      <a class="btn btn-danger" href="../../views/vendas/clean.php?clean=cancelar">Cancelar</a>
+      <a class="btn btn-danger" href="/clean.php?clean=cancelar">Cancelar</a>
     </div>
   </div>
 </form>

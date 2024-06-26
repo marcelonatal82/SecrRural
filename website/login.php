@@ -27,11 +27,11 @@
 <body class="hold-transition login-page" >
 <div class="login-box">
   <div class="login-logo">
-     <a href="../../index2.html"><b>SECRETARIA DE DESENVOLVIMENTO RURAL</b></a>
+     <a href="../../index2.html"><b>S.G.D.R</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Faça login para iniciar sua sessão</p>
+      <p class="login-box-msg">Faça login para iniciar sua sessão</p>
 
     <form action="App/session.php" method="post">
       <div class="form-group has-feedback">
@@ -43,17 +43,16 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-        <div class="col-xs-8">
+        <!--<div class="col-xs-8">
           <div class="checkbox icheck">
             <label>
               <input type="checkbox"> Lembre de mim
             </label>
           </div>
-        </div>
+        </div>-->
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">
-Entrar</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
         </div>
         <!-- /.col -->
       </div>
@@ -68,10 +67,10 @@ Entrar</button>
     </div>
    /.social-auth-links -->
 
-    <a href="#">Esqueci a minha senha</a><br>
-    <a href="register.html" class="text-center">Registrar uma nova assinatura</a>
+      <!-- <a a href="#">Esqueci a minha senha</a><br>
+          <a href="register.html" class="text-center">Registrar uma nova assinatura</a>
 
-  </div>
+          </div>-->
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->

@@ -1,7 +1,7 @@
 <?php
 require_once '../../App/auth.php';
 require_once '../../layout/script.php';
-require_once '../../App/Models/produtor.class.php';
+require_once '../../App/Models/fornecedor.class.php';
 
 echo $head;
 echo $header;
@@ -10,11 +10,11 @@ echo '<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Produtores
+        Fornecedor
       </h1>
       <ol class="breadcrumb">
         <li><a href="../"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Produtor</li>
+        <li class="active">Fornecedor</li>
       </ol>
     </section>
 
@@ -29,7 +29,7 @@ echo '<div class="content-wrapper">
             <div class="box-header">
               <i class="ion ion-clipboard"></i>
 
-              <h3 class="box-title">Lista de Produtores</h3>
+              <h3 class="box-title">Lista de Fornecedores</h3>
 
               <div class="box-tools pull-right">
                 <ul class="pagination pagination-sm inline">
@@ -72,7 +72,7 @@ echo '<div class="content-wrapper">
 
          <button name="public" type="submit" value="'.$public.'" class="btn btn-default pull-left"><i class="fa fa-plus"></i> '.$button_name. '</button></div></form>
 
-           <a href="addprodutor.php" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add Produtor</a>
+           <a href="addfornecedor.php" type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add Fornecedor</a>
          </div>
        </div>
        ';

@@ -40,8 +40,8 @@ class Relatorio extends Connect
 			}
 
 
-			$query = "SELECT `Equip_CodRefEquip`, `NomeProdutor`, SUM(`QuantItens`) AS QuantItens , SUM(`QuantItensVend`) AS QuantItensVend FROM `itens`, `equip`
-				WHERE `Produto_CodRefProduto` = `CodRefProduto`
+			$query = "SELECT `Equip_CodRefEquip`, `NomeEquip`, SUM(`QuantItens`) AS QuantItens , SUM(`QuantItensVend`) AS QuantItensVend FROM `itens`, `maq`
+				WHERE `Equip_CodRefEquip` = `CodRefEquip`
 				$AND
 				GROUP BY `Equip_CodRefEquip`";
 
@@ -52,18 +52,18 @@ class Relatorio extends Connect
 		}
 	}
 
-	public function selectCliente($perm)
+	public function selectProdutor($perm)
 	{
 		if ($perm == 1) {
 
-			$query = "SELECT `idCliente`,`NomeCliente` FROM `cliente`";
+			$query = "SELECT `idProdutor`,`NomeProdutor` FROM `fornecedores`";
 			$result = mysqli_query($this->SQL, $query);
 			while ($row[] = mysqli_fetch_assoc($result));
 			return json_encode($row);
 		}
 	}
 
-	public function selectEquip($perm, $status = null)
+	public function selectMaq($perm, $status = null)
 	{
 		if ($perm == 1) {
 
@@ -73,7 +73,7 @@ class Relatorio extends Connect
 				$where = "";
 			}
 
-			$query = "SELECT `CodRefEquip`,`NomeProdutor` FROM `equip` $where";
+			$query = "SELECT `CodRefEquip`,`NomeProdutor` FROM `maq` $where";
 			$result = mysqli_query($this->SQL, $query);
 			while ($row[] = mysqli_fetch_assoc($result));
 
@@ -93,7 +93,7 @@ class Relatorio extends Connect
 			} else {
 				$AND = "";
 			}
-			$query = "SELECT * FROM vendas,cliente, itens, equip WHERE cliente_idCliente = idCliente AND idItem = iditens AND Equip_CodRefEquip = Equip_CodRefEquip $AND ORDER BY idVendas DESC";
+			$query = "SELECT * FROM requisicao,cliente, itens, maq WHERE cliente_idCliente = idCliente AND idItem = iditens AND Equip_CodRefEquip = Equip_CodRefEquip $AND ORDER BY idVendas DESC";
 			$result = mysqli_query($this->SQL, $query);
 			while ($row[] = mysqli_fetch_assoc($result));
 

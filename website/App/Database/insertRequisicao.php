@@ -1,7 +1,7 @@
 <?php
 require_once '../../App/auth.php';
 require_once '../../App/Models/connect.php';
-require_once '../../App/Models/vendas.class.php';
+require_once '../../App/Models/requisicao.class.php';
 
 
 if (
@@ -11,8 +11,8 @@ if (
         isset($_POST['cpfcliente']) != NULL)
 ) {
 
-    $cliente = $_POST['nomeCliente'];
-    $email = $_POST['emailCliente'];
+    $nomeCliente = $_POST['nomeCliente'];
+    $emailCliente = $_POST['emailCliente'];
     $connect = new Connect;
     $cpfCliente = $connect->limpaCPF_CNPJ($_POST['cpfcliente']);
     $cart = $_SESSION['cart'];
@@ -22,14 +22,14 @@ if (
         $id = $_POST['idItem'][$key];
         $quant = $_POST['qtd'][$key];
 
-        $vendas = new Vendas;
-        $result = $vendas->itensVerify($id, $quant, $perm);
+        $requisicao = new requisicoes;
+        $result = $requisicao->itensVerify($id, $quant, $perm);
 
         if ($result['status'] == 0) {
 
             $_SESSION['msg'] = '<div class="alert alert-info alert-dismissible">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <strong>Ops!</strong> O Equipamento <b>' . $result['NomeEquip'] . '</b> não pode ser vendido nessa quantidade! <br/> Quantidade em estoque <b>' . $result['estoque'] . '. </b><br/></div>';
-            header('Location: ../../views/vendas/index1.php');
+            header('Location: ../../views/requisicao/index.php');
             exit;
         }
     }
@@ -42,10 +42,10 @@ if (
 
         $block = !empty($_POST['block']) ?? null;
 
-        $vendas = new Vendas;
-        $vendas->itensVendidos($id, $quant, $cliente, $email, $cpfCliente, $cart, $idUsuario, $perm, $block);
+        $requisicao = new requisicoes;
+        $requisicao->itensVendidos($id, $quant, $nomeCliente, $emailCliente, $cpfCliente, $cart, $idUsuario, $perm, $block);
     }
 } else {
     $_SESSION['alert'] = 0;
-    header('Location: ../../views/vendas/');
+    header('Location: ../../views/requisicao/');
 }

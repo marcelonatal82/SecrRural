@@ -10,11 +10,11 @@ echo '<div class="content-wrapper">';
 echo '<!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Adicionar <small>Produtor</small>
+        Adicionar <small>Fornecedor</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="../"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Produtores Rurais</li>
+        <li class="active">Fornecedor</li>
       </ol>
     </section>
 
@@ -30,14 +30,14 @@ echo '
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Produtor Rural</h3>
+              <h3 class="box-title">Fornecedores</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="../../App/Database/insertprodutor.php" method="POST">
+            <form role="form" action="../../App/Database/insertfornecedor.php" method="POST">
               <div class="box-body">
               <div class="box-header with-border">
-              <h3 class="box-title">Produtor</h3>
+              <h3 class="box-title">Fornecedor</h3>
             </div>
 
             <div class="form-group">

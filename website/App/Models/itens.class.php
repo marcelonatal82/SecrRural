@@ -11,7 +11,7 @@
 
     public function listItens($idEquip, $idFabricante)
     {
-      $query = "SELECT * FROM `itens`,`fabricante`,`equip` WHERE (`Fabricante_idFabricante` = `idFabricante` AND `Equip_CodRefEquip` = `CodRefEquip`) AND (`Fabricante_idFabricante` = '$idFabricante' AND `Equip_CodRefEquip` = '$idEquip') ";
+      $query = "SELECT * FROM `itens`,`fabricante`,`maq` WHERE (`Fabricante_idFabricante` = `idFabricante` AND `Equip_CodRefEquip` = `CodRefEquip`) AND (`Fabricante_idFabricante` = '$idFabricante' AND `Equip_CodRefEquip` = '$idEquip') ";
       $result = mysqli_query($this->SQL, $query) or die(mysqli_error($this->SQL));
       $q = 0;
       $v = 0;
@@ -50,7 +50,7 @@
 
     public function index($value)
     {
-      $this->query = "SELECT * FROM `itens`,`fabricante`,`equip` WHERE (`Fabricante_idFabricante` = `idFabricante` AND `Equip_CodRefEquip` = `CodRefEquip`) AND `itensPublic` = '$value'";
+      $this->query = "SELECT * FROM `itens`,`fabricante`,`maq` WHERE (`Fabricante_idFabricante` = `idFabricante` AND `Equip_CodRefEquip` = `CodRefEquip`) AND `itensPublic` = '$value'";
       $this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL));
 
       if ($this->result) {
@@ -283,7 +283,7 @@
     {
       if (isset($value)) {
         //$output = '';  
-        $query = "SELECT P.CodRefEquip, P.NomeEquip, I.idItens, I.Equip_CodRefEquip, I.* FROM itens AS I, equip AS P WHERE (I.Equip_CodRefEquip = P.CodRefEquip) AND (I.Equip_CodRefEquip LIKE '" . $value . "%' OR P.NomeEquip LIKE '%" . $value . "%') GROUP BY I.idItens, P.CodRefEquip LIMIT 5";
+        $query = "SELECT P.CodRefEquip, P.NomeEquip, I.idItens, I.Equip_CodRefEquip, I.* FROM itens AS I, maq AS P WHERE (I.Equip_CodRefEquip = P.CodRefEquip) AND (I.Equip_CodRefEquip LIKE '" . $value . "%' OR P.NomeEquip LIKE '%" . $value . "%') GROUP BY I.idItens, P.CodRefEquip LIMIT 5";
         $result = mysqli_query($this->SQL, $query);
 
         if (mysqli_num_rows($result) > 0) {

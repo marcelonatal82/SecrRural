@@ -11,7 +11,7 @@ echo $aside;
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Relatorio de Vendas
+      Relatorio de Solicitações
     </h1>
     <ol class="breadcrumb">
       <li><a href="../"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -31,7 +31,7 @@ echo $aside;
         <div class="box-header">
           <i class="ion ion-clipboard"></i>
 
-          <h3 class="box-title">Produtos</h3>
+          <h3 class="box-title">Produtor</h3>
         </div>
 
 
@@ -48,16 +48,16 @@ echo $aside;
                 <form action="" method="POST" class="col-md-6 well">
                   <div class="col-md-7">
 
-                    <select name="produto" class="form-control">
+                    <select name="produtor" class="form-control">
 
                       <option value="">Nenhum</option>
                       <?php
 
                       $relatorio = new Relatorio();
-                      $resps = $relatorio->selectProduto($perm);
+                      $resps = $relatorio->selectProdutor($perm);
                       $resps = json_decode($resps, true);
                       foreach ($resps as $resp) {
-                        echo '<option value="' . $resp['CodRefProduto'] . '">' . $resp['NomeProduto'] . '</option>';
+                        echo '<option value="' . $resp['CodRefEquip'] . '">' . $resp['NomeEquip'] . '</option>';
                       }
 
                       ?>
@@ -78,12 +78,12 @@ echo $aside;
 
                 <div id="ul-result" class="col-md-12">
                   <?php
-                  if (isset($_POST['produto']) != null) {
-                    $idProduto = $_POST['produto'];
+                  if (isset($_POST['fornecedores']) != null) {
+                    $idProdutor = $_POST['fornecedores'];
                     $status = $_POST['status'];
                   ?>
                     <form id="produtos_selecionados" action="gerarcsv.php" method="post">
-                      <input type="hidden" name="idproduto" value="<?php echo $idProduto; ?>">
+                      <input type="hidden" name="idprodutor" value="<?php echo $idProdutor; ?>">
                       <input type="hidden" name="statusR" value="<?php echo $status; ?>">
                       <button type="submit" class="btn btn-default">Imprimir CSV</button>
                     </form>
@@ -92,7 +92,7 @@ echo $aside;
                   } else {
 
                     echo ' <form id="todos_produtos" action="gerarcsv.php" method="post">
-                          <input type="hidden" name="idproduto">
+                          <input type="hidden" name="idprodutor">
                           <button type="submit">Imprimir CSV</button>
                         </form>';
                   }
@@ -113,11 +113,11 @@ echo $aside;
                 <tbody>
 
                   <?php
-                  if (isset($_POST['produto']) != null) {
-                    $idProduto = $_POST['produto'];
+                  if (isset($_POST['fornecedores']) != null) {
+                    $idProdutor = $_POST['fornecedores'];
                     $status = $_POST['status'];
 
-                    $rows = $relatorio->qtdeItensEstoque($perm, $status, $idProduto);
+                    $rows = $relatorio->qtdeItensEstoque($perm, $status, $idProdutor);
                   } else {
                     $rows = $relatorio->qtdeItensEstoque($perm);
                   }
@@ -130,8 +130,8 @@ echo $aside;
                       $qiv = $row['QuantItensVend'];
                       $r = $qi - $qiv;
                       echo '<tr> 
-                                <td>' . $row['Produto_CodRefProduto'] . '</td>
-                                <td>' . $row['NomeProduto'] . '</td>
+                                <td>' . $row['Equip_CodRefEquip'] . '</td>
+                                <td>' . $row['NomeEquip'] . '</td>
                                 <td>' . $qi . '</td>
                                 <td>' . $qiv . '</td>
                                 <td>' . $r . '</td>

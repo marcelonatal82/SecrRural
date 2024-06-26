@@ -1,6 +1,6 @@
 <?php
 require_once '../auth.php';
-require_once '../Models/equip.class.php';
+require_once '../Models/maq.class.php';
 
 	if(isset($_POST['update']) == 'Cadastrar'){
 
@@ -20,9 +20,9 @@ require_once '../Models/equip.class.php';
 
 
 		}else{
-			header('Location: ../../views/equip/index.php?alert=0');
+			header('Location: ../../views/maq/index.php?alert=0');
 		}
 
 	}else{
-		header('Location: ../../views/equip/index.php');
+		header('Location: ../../views/maq/index.php');
 	}
