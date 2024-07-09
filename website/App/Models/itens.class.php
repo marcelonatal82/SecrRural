@@ -171,9 +171,9 @@
       $this->query = "INSERT INTO `itens`(`idItens`,`Image` ,`QuantItens`, `QuantItensVend`, `ValCompItens`, `ValVendItens`, `DataCompraItens`, `DataVenci_Itens`, `ItensAtivo`,`ItensPublic`, `Equip_CodRefEquip`, `Fabricante_idFabricante`, `Usuario_idUser`) VALUES (NULL, '$nomeimagem', '$QuantItens', 0, '$ValCompItens', '$ValVendItens', '$DataCompraItens', '$DataVenci_Itens', 1, 1, '$Equip_CodRefEquip', '$Fabricante_idFabricante', '$idusuario')";
       if ($this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL))) {
 
-        header('Location: ../../views/itens/index1.php?alert=1');
+        header('Location: ../../views/itens/index.php?alert=1');
       } else {
-        header('Location: ../../views/itens/index1.php?alert=0');
+        header('Location: ../../views/itens/index.php?alert=0');
       }
     } //InsertItens
 
@@ -202,13 +202,13 @@
           'ValVendItens' => $ValVendItens,
           'DataCompraItens' => $DataCompraItens,
           'DataVenci_Itens' => $DataVenci_Itens,
-          'CodRefEquip' => $Equip_CodRefEquip,
+          'Equip_CodRefEquip' => $Equip_CodRefEquip,
           'idFabricante' => $Fabricante_idFabricante
         ],);
       }
     }
 
-    public function updateItens($idItens, $nomeimagem, $QuantItens, $ValCompItens, $ValVendItens, $DataCompraItens, $DataVenci_Itens, $Fabricante_idFabricante, $idusuario)
+    public function updateItens($idItens, $nomeimagem, $QuantItens, $ValCompItens, $ValVendItens, $DataCompraItens, $DataVenci_Itens,$Equip_CodRefEquip, $Fabricante_idFabricante, $idusuario)
     {
       $this->query = "UPDATE `itens` SET
       `Image` = '$nomeimagem', 
@@ -217,6 +217,7 @@
       `ValVendItens`='$ValVendItens',
       `DataCompraItens`='$DataCompraItens',
       `DataVenci_Itens`='$DataVenci_Itens',
+      `Equip_CodRefEquip` ='$Equip_CodRefEquip',
       `Fabricante_idFabricante`='$Fabricante_idFabricante',
       `Usuario_idUser`='$idusuario' 
       WHERE `idItens`= '$idItens'";

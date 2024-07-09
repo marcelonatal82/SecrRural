@@ -61,14 +61,14 @@ echo '<div class="content-wrapper">
           $public = 0;
           $button_name = "Listar Desativados";
         }
-               $produtor->index($value);
+               $fornecedor->index($value);
               
         
         echo '</ul>
         <br/>
         <!-- /.box-body -->
         <div class="left">
-         <form action="index1.php" method="post">
+         <form action="index.php" method="post">
 
          <button name="public" type="submit" value="'.$public.'" class="btn btn-default pull-left"><i class="fa fa-plus"></i> '.$button_name. '</button></div></form>
 

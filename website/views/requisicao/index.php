@@ -12,7 +12,7 @@ echo '<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Itens cadastrados
+       Requisitar itens 
       </h1>
       <ol class="breadcrumb">
         <li><a href="../"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -107,7 +107,7 @@ if (isset($_POST['CPF'])) {
         </div>
         <hr />
         <div class="form-group">
-          <label for="block" class="btn label-info"><b>Bloquear compras por produto.</b>
+          <label for="block" class="btn label-info"><b>Bloquear reserva por maquinarios.</b>
             <input type="checkbox" id="block" name="block" checked />
           </label>
         </div>
@@ -139,7 +139,7 @@ if (isset($_POST['CPF'])) {
       <tr>
         <th style="width: 10px">#</th>
         <th>Cod.</th>
-        <th>Equipamentos</th>
+        <th>Maquinário</th>
         <th>Qtde</th>
         <th style="width:40px" title="Remover">Del</th>
       </tr>
@@ -193,8 +193,8 @@ if (isset($_POST['CPF'])) {
   <!-- /.box-body -->
   <div class="col-md-12">
     <div class="box-footer">
-      <button type="submit" name="comprar" class="btn btn-primary" value="Cadastrar">Comprar</button>
-      <a class="btn btn-danger" href="/clean.php?clean=cancelar">Cancelar</a>
+      <button type="submit" name="comprar" class="btn btn-primary" value="Cadastrar">Reservar</button>
+      <a class="btn btn-danger" href="clean.php?clean=cancelar">Cancelar</a>
     </div>
   </div>
 </form>

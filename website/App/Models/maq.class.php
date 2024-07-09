@@ -113,7 +113,7 @@
 
   public function listEquip(){
 
-   $this->query = "SELECT *FROM `maq` WHERE `Ativo` = 1 AND `PublicEquip` = 1";
+   $this->query = "SELECT * FROM `maq` WHERE `Ativo` = 1 AND `PublicEquip` = 1";
    $this->result = mysqli_query($this->SQL, $this->query) or die ( mysqli_error($this->SQL));
 
    if($this->result){

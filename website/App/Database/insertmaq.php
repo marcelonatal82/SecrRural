@@ -12,9 +12,9 @@ require_once '../Models/maq.class.php';
 
 			if(isset($_POST['id']) != NULL && $idUsuario != NULL){
 				$id = $_POST['id'];
-				$equip->UpdateEquip($id, $nomeEquip, $idUsuario);
+				$maq->UpdateEquip($id, $nomeEquip, $idUsuario);
 			}elseif($iduser == $idUsuario){
-				$equip->InsertEquip($nomeEquip, $idUsuario);
+				$maq->InsertEquip($nomeEquip, $idUsuario);
 			}
 			
 

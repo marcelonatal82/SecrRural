@@ -4,32 +4,32 @@ require_once '../Models/fornecedor.class.php';
 
 if(isset($_POST['update']) == 'Cadastrar'){
 
-//--Representante--//
-$NomeProdutor = $_POST['NomeProdutor'];
-$TelefoneProdutor = $_POST['TelefoneProdutor'];
-$EmailProdutor = $_POST['EmailProdutor'];
+//--Fornecedor--//
+$NomeFornecedor = $_POST['NomeFornecedor'];
+$TelefoneFornecedor = $_POST['TelefoneFornecedor'];
+$EmailFornecedor = $_POST['EmailFornecedor'];
 $idFabricante = $_POST['idFabricante'];
 
 
 
-if($idUsuario != NULL && $idFabricante != NULL && $NomeProdutor != NULL && $TelefoneProdutor != NULL && $EmailProdutor != NULL){
+if($idUsuario != NULL && $idFabricante != NULL && $NomeFornecedor != NULL && $TelefoneFornecedor != NULL && $EmailFornecedor != NULL){
 
-		if (isset($_POST['idProdutor'])){
+		if (isset($_POST['idFornecedor'])){
 
-			$idProdutor = $_POST['idProdutor'];
+			$idFornecedor = $_POST['idFornecedor'];
 
-						$produtor->UpdateRepresentante($idProdutor, $NomeProdutor, $TelefoneProdutor, $EmailProdutor, $idUsuario);
+			$fornecedor->UpdateFornecedor($idFornecedor, $NomeFornecedor, $TelefoneFornecedor, $EmailFornecedor, $idUsuario);
 			
 		}elseif($_POST['iduser'] == $idUsuario){
 			
-			$produtor->InsertRepresentante($NomeProdutor, $TelefoneProdutor, $EmailProdutor, $idFabricante, $idUsuario);
+			$fornecedor->InsertFornecedor($NomeFornecedor, $TelefoneFornecedor, $EmailFornecedor, $idFabricante, $idUsuario);
 		}
 
 	}else{
-		header('Location: ../../views/fornecedores/index1.php?alert=3');
+		header('Location: ../../views/fornecedores/index.php?alert=3');
 	}
 
 
  }else{
-	header('Location: ../../views/fornecedores/index1.php');
+	header('Location: ../../views/fornecedores/index.php');
 }

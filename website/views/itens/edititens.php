@@ -18,7 +18,7 @@ if (isset($_GET['q'])) {
   echo '<!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Editar <small>Equipamentos</small>
+        Editar <small>Maquinários</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="../"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -39,18 +39,18 @@ if (isset($_GET['q'])) {
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Equipamento</h3>
+              <h3 class="box-title">Maquinarios</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <form role="form" enctype="multipart/form-data" action="../../App/Database/insertitens.php" method="POST">
               <div class="box-body">
               	<div class="form-group">
-                  <label for="exampleInputEmail1">Nome do Equipamento</label>
+                  <label for="exampleInputEmail1">Nome do Maquinario</label>
 
-            <select class="form-control" name="codProduto">
+            <select class="form-control" name="codRefEquip">
             ';
-  $equip->listProdutos($resp['Itens']['CodRefEquip']);
+  $maq->listEquip($resp['Itens']['CodRefEquip']);
   echo '</select>
             </div>
 

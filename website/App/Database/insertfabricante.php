@@ -14,7 +14,7 @@ $TelefoneFabricante = $_POST['TelefoneFabricante'];
 $Public = $_POST['Public'];
 $status = 1;
 
-//--Representante--//
+//--Fabricante--//
 
 
 $iduser = $_POST['iduser'];
@@ -23,10 +23,10 @@ if($iduser == $idUsuario && $NomeFabricante != NULL){
 
 		if (!isset($_POST['idFabricante'])){
 
-			$NomeRepresentante = $_POST['NomeRepresentante'];
-			$TelefoneRepresentante = $_POST['TelefoneRepresentante'];
-			$EmailRepresentante = $_POST['EmailRepresentante'];
-			$fabricante->InsertFabricante($NomeFabricante, $CNPJFabricante, $EmailFabricante, $EnderecoFabricante, $TelefoneFabricante, $idUsuario,  $NomeRepresentante, $TelefoneRepresentante, $EmailRepresentante, $status, $perm);
+			$NomeFornecedor = $_POST['NomeFornecedor'];
+			$TelefoneFornecedor = $_POST['TelefoneFornecedor'];
+			$EmailFornecedor = $_POST['EmailFornecedor'];
+			$fabricante->InsertFabricante($NomeFabricante, $CNPJFabricante, $EmailFabricante, $EnderecoFabricante, $TelefoneFabricante, $idUsuario,  $NomeFornecedor, $TelefoneFornecedor, $EmailFornecedor, $status, $perm);
 		
 
 	}else{
@@ -37,10 +37,10 @@ if($iduser == $idUsuario && $NomeFabricante != NULL){
 			
 		}
 	}else{
-			header('Location: ../../views/fabricante/index1.php?alert=3');
+			header('Location: ../../views/fabricante/index.php?alert=3');
 		}
 		
 	
  }else{
-	header('Location: ../../views/fabricante/index1.php');
+	header('Location: ../../views/fabricante/index.php');
 }

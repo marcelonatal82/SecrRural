@@ -4,12 +4,12 @@ require_once '../Models/fornecedor.class.php';
 
 if(isset($_POST['update']) == 'Cadastrar'){
 
-$id = $_POST['idProdutor'];
+$id = $_POST['idFornecedor'];
 
-$produtor->DelProdutor($id);
+$fornecedor->DelFornecedor($id);
 
 }else{
-	header('Location: ../../views/fornecedores/index1.php');
+	header('Location: ../../views/fornecedores/index.php');
 }
 
 ?>

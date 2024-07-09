@@ -643,7 +643,7 @@ $aside = '<!-- Left side column. contains the logo and sidebar -->
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="' . $url . 'relatórios/"><i class="fa fa-circle-o"></i>Relatórios</a></li>
+            <li><a href="' . $url . 'relatorios/"><i class="fa fa-circle-o"></i>Relatórios</a></li>
             <!--<li><a href="' . $url . 'relatorios/compclientes.php"><i class="fa fa-circle-o"></i>Relatorios Clientes</a></li>-->
             
           </ul>

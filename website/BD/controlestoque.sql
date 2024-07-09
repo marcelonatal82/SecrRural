@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 25-Jun-2024 às 23:28
+-- Tempo de geração: 07-Jul-2024 às 23:47
 -- Versão do servidor: 8.0.33
 -- versão do PHP: 8.0.26
 
@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 
 INSERT INTO `cliente` (`idCliente`, `NomeCliente`, `EmailCliente`, `cpfCliente`, `statusCliente`, `Usuario_idUsuario`, `dataRegCliente`, `sexo`, `naturalidade`, `data_nascimento`, `nacionalidade`, `estado_civil`, `nome_mae`) VALUES
 (7, 'Thiago augusto SANTOS', 'augustosantos@teste.com', '11119999119', 1, 3, '2019-03-20 21:45:01', 'MASCULINO', 'BRASILEIRO', '14/04/2024', 'JATAI-GOIAS', 'CASADO', 'MAE DELE'),
-(8, 'Wesley SilvaNATAL', 'teste4@teste.com', '33344455567', 1, 3, '2019-03-25 21:00:06', 'masculino', 'goias', '29/08/1983', 'brasileiro', 'casado', 'MARIA NATAL'),
+(8, 'Wesley xxxxx', 'teste4@teste.com', '33344455567', 1, 1, '2019-03-25 21:00:06', 'masculino', 'brasileiro', '29/08/1983', 'goias', 'casado', 'MARIA NATAL'),
 (20, 'ALEXANDRE NATAL', 'alexandre@alexandre.com..br', '111111222525', 1, 3, '2024-04-23 00:11:54', 'MASCULINO', 'ARGENTINO', '29/01/1986', 'JATAI GOIAS', 'SOLTEIRO', 'MAE DO ALEXANDRE'),
 (33, 'MARCELO NATAL', 'ALVES@ALVES.COM', '00165588820', 1, 1, '2024-05-14 00:15:23', 'MASCULINO', 'JATAIGO', '01/01/2008', 'BRASILEIRO', 'CASADO', 'JOSANE');
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `fabricante` (
   `Usuario_idUser` int NOT NULL,
   PRIMARY KEY (`idFabricante`),
   KEY `fk_Fabricante_Usuario1_idx` (`Usuario_idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Extraindo dados da tabela `fabricante`
@@ -89,7 +89,9 @@ INSERT INTO `fabricante` (`idFabricante`, `NomeFabricante`, `CNPJFabricante`, `E
 (7, 'Microsoft', '000099998989898', 'microsoft@microsoft.com', 'Rua 1', '44444444', 1, 1, 1),
 (8, 'Microsoft 2', '000099998989898', 'microsoft@microsoft.com', 'Rua 1', '44444444', 1, 1, 1),
 (9, 'Chevrolet', '009999999900000', 'teste@teste.com', 'Rua 1', '334544343', 1, 1, 1),
-(10, 'Spal Industria Brasileira de Bebidas', '61186888000193', 'N/S', 'Avenida Francisco Ferreira Lopes - 4303', '08000212121', 1, 1, 1);
+(10, 'Spal Industria Brasileira de Bebidas', '61186888000193', 'N/S', 'Avenida Francisco Ferreira Lopes - 4303', '08000212121', 1, 1, 1),
+(11, 'JOHN DEERE', '', '', '', '', 1, 1, 1),
+(12, 'MASSEY FERGUSON ', '', '', '', '', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -99,24 +101,24 @@ INSERT INTO `fabricante` (`idFabricante`, `NomeFabricante`, `CNPJFabricante`, `E
 
 DROP TABLE IF EXISTS `fornecedores`;
 CREATE TABLE IF NOT EXISTS `fornecedores` (
-  `idProdutor` int NOT NULL AUTO_INCREMENT,
-  `NomeProdutor` varchar(75) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `TelefoneProdutor` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `EmailProdutor` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `idFornecedor` int NOT NULL AUTO_INCREMENT,
+  `NomeFornecedor` varchar(75) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `TelefoneFornecedor` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `EmailFornecedor` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `repAtivo` int NOT NULL,
   `repPublic` int NOT NULL,
   `Fabricante_idFabricante` int NOT NULL,
   `Usuario_idUser` int NOT NULL,
-  PRIMARY KEY (`idProdutor`),
+  PRIMARY KEY (`idFornecedor`),
   KEY `fk_Representante_Fabricante1_idx` (`Fabricante_idFabricante`),
   KEY `fk_Representante_Usuario1_idx` (`Usuario_idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Extraindo dados da tabela `fornecedores`
 --
 
-INSERT INTO `fornecedores` (`idProdutor`, `NomeProdutor`, `TelefoneProdutor`, `EmailProdutor`, `repAtivo`, `repPublic`, `Fabricante_idFabricante`, `Usuario_idUser`) VALUES
+INSERT INTO `fornecedores` (`idFornecedor`, `NomeFornecedor`, `TelefoneFornecedor`, `EmailFornecedor`, `repAtivo`, `repPublic`, `Fabricante_idFabricante`, `Usuario_idUser`) VALUES
 (1, 'Francisco Algusto', '11 9999-9999', 'franciscoalgusto@ibm.com', 1, 1, 1, 1),
 (2, 'FabrÃ­cio PaixÃ£o ', '31 98888-8888', 'fabriciotp@ibm.com', 1, 1, 1, 1),
 (3, 'Marcos Rafael', '43434343', 'marcosrafael@intel.com', 1, 1, 2, 1),
@@ -126,7 +128,16 @@ INSERT INTO `fornecedores` (`idProdutor`, `NomeProdutor`, `TelefoneProdutor`, `E
 (7, 'Thiago', '33333444', 'thiago@microsoft.com', 1, 1, 7, 1),
 (8, 'Thiago 2', '33333444', 'thiago2@microsoft.com', 1, 1, 8, 1),
 (9, 'Thiago 22', '1000000', 'thiago@chevrolet.com', 1, 1, 9, 1),
-(10, 'Spal Industria Brasileira de Bebidas', '08000212121', 'N/S', 1, 1, 10, 1);
+(10, 'Spal Industria Brasileira de Bebidas', '08000212121', 'N/S', 1, 1, 10, 1),
+(11, '', '', '', 1, 1, 11, 1),
+(12, '', '', '', 1, 1, 11, 1),
+(13, '', '', '', 1, 1, 11, 1),
+(14, '', '', '', 1, 1, 11, 1),
+(15, '', '', '', 1, 1, 11, 1),
+(16, '', '', '', 1, 1, 12, 1),
+(17, '', '', '', 1, 1, 12, 1),
+(18, '', '', '', 1, 1, 12, 1),
+(19, 'dd', 'dd', 'dd', 1, 1, 12, 1);
 
 -- --------------------------------------------------------
 
@@ -154,18 +165,15 @@ CREATE TABLE IF NOT EXISTS `itens` (
   KEY `fk_Itens_Produto1_idx` (`Equip_CodRefEquip`),
   KEY `fk_Itens_Fabricante1_idx` (`Fabricante_idFabricante`),
   KEY `fk_Itens_Usuario1_idx` (`Usuario_idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Extraindo dados da tabela `itens`
 --
 
 INSERT INTO `itens` (`idItens`, `Image`, `QuantItens`, `QuantItensVend`, `ValCompItens`, `ValVendItens`, `DataCompraItens`, `DataVenci_Itens`, `ItensAtivo`, `ItensPublic`, `Equip_CodRefEquip`, `Fabricante_idFabricante`, `Usuario_idUser`, `DataRegistro`) VALUES
-(11, '', '500', '372', '1700.00', '2100.00', '2018-10-27', '2018-10-31', 1, 0, 5, 1, 2, '2018-10-27 20:38:39'),
-(12, 'dist/img/products/oie_pNFPNYDlDJlz.png', '250', '166', '3.00', '9.00', '2018-10-27', '2018-10-31', 1, 1, 3, 1, 1, '2018-10-27 20:43:12'),
-(13, 'dist/img/products/foto-caminha-caçamba.jpg', '100', '37', '4.00', '9.50', '2019-09-17', '2019-09-17', 1, 1, 3, 1, 3, '2019-09-17 21:07:25'),
-(14, '', '10', '8', '2100.00', '3900.00', '2019-09-17', '2019-09-17', 1, 1, 4, 1, 1, '2019-09-17 21:21:40'),
-(15, '', '58', '12', '0.30', '1.00', '2019-09-17', '2020-09-17', 1, 1, 6, 1, 1, '2019-09-17 21:29:33');
+(15, 'dist/img/products/transferir.jfif', '58', '12', '0.30', '1.00', '2019-09-17', '2020-09-17', 1, 1, 6, 4, 1, '2019-09-17 21:29:33'),
+(16, 'dist/img/products/oie_pNFPNYDlDJlz.png', '56', '0', '1.00', '1.00', '2024-07-07', '2024-08-02', 1, 1, 26, 6, 1, '2024-07-07 22:22:16');
 
 -- --------------------------------------------------------
 
@@ -182,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `maq` (
   `Usuario_idUser` int NOT NULL,
   PRIMARY KEY (`CodRefEquip`),
   KEY `fk_Produto_Usuario_idx` (`Usuario_idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb3;
 
 --
 -- Extraindo dados da tabela `maq`
@@ -196,23 +204,12 @@ INSERT INTO `maq` (`CodRefEquip`, `NomeEquip`, `Ativo`, `PublicEquip`, `Usuario_
 (5, 'Semeadoras', 1, 1, 1),
 (6, 'Arados', 1, 1, 1),
 (7, 'Trator de traç simpl', 1, 1, 3),
-(8, 'trator de esteira', 1, 1, 3),
 (9, 'trator esteira', 1, 1, 3),
-(10, 'ddddd', 0, 1, 3),
-(11, 'ddd', 1, 1, 3),
-(12, 'patrola', 1, 1, 3),
-(13, 'esteira', 1, 1, 3),
-(14, 'esteira', 1, 1, 3),
-(15, 'esteira', 1, 1, 3),
-(16, 'est', 1, 0, 3),
-(17, 'est', 1, 0, 3),
-(18, 'est', 1, 0, 3),
-(19, 'EST', 1, 0, 3),
-(20, 'EST', 1, 0, 3),
 (21, 'TRATORESTEIRA', 1, 1, 3),
-(22, 'est', 1, 0, 3),
-(23, 'jjjjjjjj', 1, 1, 1),
-(24, 'CARRETA', 1, 1, 1);
+(24, 'CARRETA', 1, 1, 1),
+(25, 'COLHEITADEIRA', 1, 1, 1),
+(26, 'PATROLA DE CORRENTE', 1, 1, 1),
+(27, 'MASSEY FERGUSON', 1, 1, 1);
 
 -- --------------------------------------------------------
 

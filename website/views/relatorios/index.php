@@ -15,7 +15,7 @@ echo $aside;
     </h1>
     <ol class="breadcrumb">
       <li><a href="../"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li class="active">Relatorios</li>
+      <li class="active">Relatórios</li>
     </ol>
   </section>
 
@@ -105,8 +105,8 @@ echo $aside;
                   <tr>
                     <th>Cód.:</th>
                     <th>Nome</th>
-                    <th>Qtde Comprada</th>
-                    <th>Qtde Vendida</th>
+                    <th>Qtde Adquirido</th>
+                    <th>Qtde Emprestada</th>
                     <th>Qtde em estoque</th>
                   </tr>
                 </thead>

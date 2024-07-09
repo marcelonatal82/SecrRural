@@ -52,9 +52,9 @@ class requisicao extends Connect
   {
 
     $cpfcliente = intval(Connect::limpaCPF_CNPJ($cpfcliente));
-    $idCliente = requisicoes::idCliente($cpfcliente); // Verifica se o cliente existe no DB.
+    $idCliente = requisicao::idCliente($cpfcliente); // Verifica se o cliente existe no DB.
 
-    $jaComprou = (new requisicoes)->jaComprou($idCliente, $iditem, $block);
+    $jaComprou = (new requisicao)->jaComprou($idCliente, $iditem, $block);
 
     if ($perm > 2) {
       $_SESSION['msg'] =  '<div class="alert alert-danger alert-dismissible">
@@ -106,7 +106,7 @@ class requisicao extends Connect
           }
 
 
-          $query = "INSERT INTO `requisicao`(`idvendas`, `quantitens`, `valor`, `iditem`, `cart`, `cliente_idCliente`, `idusuario`) VALUES (NULL, '$quant', '$valor', '$iditem', '$cart', '$idCliente', '$idUsuario')";
+          $query = "INSERT INTO `vendas`(`idvendas`, `quantitens`, `valor`, `iditem`, `cart`, `cliente_idCliente`, `idusuario`) VALUES (NULL, '$quant', '$valor', '$iditem', '$cart', '$idCliente', '$idUsuario')";
           if ($result = mysqli_query($this->SQL, $query) or die(mysqli_error($this->SQL))) {
 
 
@@ -193,7 +193,7 @@ class requisicao extends Connect
   public function notavd($cart)
   {
 
-    $query = "SELECT * FROM `requisicao` WHERE `cart` = '$cart' ";
+    $query = "SELECT * FROM `vendas` WHERE `cart` = '$cart' ";
 
     if ($result = mysqli_query($this->SQL, $query)  or die(mysqli_error($this->SQL))) {
 
@@ -228,7 +228,7 @@ class requisicao extends Connect
       $dataIn = $dataAno;
       $dataFim = date('Y-m-d H:i:s');
 
-      $query = "SELECT COUNT(*) AS TOTAL FROM `requisicao` WHERE `cliente_idCliente` = '$idCliente' AND (`datareg` BETWEEN '$dataIn' AND '$dataFim' AND `iditem` = '$idItem')";
+      $query = "SELECT COUNT(*) AS TOTAL FROM `venda` WHERE `cliente_idCliente` = '$idCliente' AND (`datareg` BETWEEN '$dataIn' AND '$dataFim' AND `iditem` = '$idItem')";
       $result = mysqli_query($this->SQL, $query);
 
       $row = mysqli_fetch_assoc($result);

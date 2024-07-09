@@ -29,7 +29,7 @@ echo '<div class="content-wrapper">
             <div class="box-header">
               <i class="ion ion-clipboard"></i>
 
-              <h3 class="box-title">Lista de Itens</h3>
+              <h3 class="box-title">Relação de Itens</h3>
 
               
             </div>

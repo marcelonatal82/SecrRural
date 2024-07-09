@@ -39,11 +39,11 @@ echo '
             <form role="form" enctype="multipart/form-data" action="../../App/Database/insertitens.php" method="POST" autocomplete="off">
               <div class="box-body">
               	<div class="form-group">
-                  <label for="exampleInputEmail1">Nome do Maquinario</label>
+                  <label for="exampleInputEmail1">Nome do Maquinário</label>
                   
 
 
-            <select class="form-control" name="codEquip">
+            <select class="form-control" name="CodRefEquip">
             ';
 $maq->listEquip();
 echo '</select>
@@ -59,24 +59,24 @@ echo '</select>
             </div>
 
                 <div class="form-group">
-                  <label for="exampleInputEmail1">QuantItens</label>
+                  <label for="exampleInputEmail1">Quantidade de Itens</label>
                   <input type="text" name="QuantItens" class="form-control" id="exampleInputEmail1" placeholder="QuantItens">
                 </div>
 
                 <div class="form-group">
-                  <label for="exampleInputEmail1">ValCompItens</label>
+                  <label for="exampleInputEmail1">Valor Comprar</label>
                   <input type="text" name="ValCompItens" class="form-control" id="exampleInputEmail1" placeholder="ValCompItens" value="1">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">ValVendItens</label>
+                  <label for="exampleInputEmail1">Valor Venda</label>
                   <input type="text" name="ValVendItens" class="form-control" id="exampleInputEmail1" placeholder="ValVendItens" value="1">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">DataCompraItens</label>
+                  <label for="exampleInputEmail1">Data Inicio </label>
                   <input type="date" name="DataCompraItens" class="form-control" id="exampleInputEmail1" placeholder="DataCompraItens">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">DataVenci_Itens</label>
+                  <label for="exampleInputEmail1">Data Devolução </label>
                   <input type="date" name="DataVenci_Itens" class="form-control" id="exampleInputEmail1" placeholder="DataVenci_Itens">
                 </div>
 
@@ -85,10 +85,11 @@ echo '</select>
                   <label for="exampleInputEmail1">Imagem</label>
                   <input type="file" name="arquivo" class="form-control">
                 </div>
+                <div class="form-group">
                  <input type="hidden" name="valor" value="#">
                            
                  <input type="hidden" name="iduser" value="' . $idUsuario . '">
-
+                 </div>
 
               <!-- /.box-body -->
 

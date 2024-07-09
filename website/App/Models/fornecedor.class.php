@@ -6,7 +6,7 @@
 
    require_once 'connect.php';
 
-    class Produtor extends Connect
+    class Fornecedor extends Connect
    {
    	
    	public function index($value = NULL)
@@ -30,8 +30,8 @@
             <i class="fa fa-ellipsis-v"></i>
           </span>
           <!-- checkbox -->
-          <form class="label" name="ativ'.$row['idProdutor'].'" action="../../App/Database/action.php" method="post">
-                    <input type="hidden" name="id" id="id" value="'.$row['idProdutor'].'">
+          <form class="label" name="ativ'.$row['idFornecedor'].'" action="../../App/Database/action.php" method="post">
+                    <input type="hidden" name="id" id="id" value="'.$row['idFornecedor'].'">
                     <input type="hidden" name="status" id="status" value="'.$row['repAtivo'].'">
                     <input type="hidden" name="tabela" id="tabela" value="fornecedores">                  
                     <input type="checkbox" id="status" name="status" ';
@@ -39,16 +39,16 @@
                     echo ' value="'.$row['repAtivo'].'" onclick="this.form.submit();" /></form>
 
                     <!-- todo text -->
-                    <span class="text"><span class="badge left">'.$row['NomeFabricante'].' </span> '.$row['NomeProdutor'].'</span>
+                    <span class="text"><span class="badge left">'.$row['NomeFabricante'].' </span> '.$row['NomeFornecedor'].'</span>
                     <!-- Emphasis label -->
                     <!-- <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small> -->
                     <!-- General tools such as edit or delete-->
                      <div class="tools right">
 
-                      <a href="" data-toggle="modal" data-target="#myModalup'.$row['idProdutor'].'"><i class="fa fa-edit"></i></a> 
+                      <a href="" data-toggle="modal" data-target="#myModalup'.$row['idFornecedor'].'"><i class="fa fa-edit"></i></a> 
                     
                       <!-- Button trigger modal -->
-                    <a href="" data-toggle="modal" data-target="#myModal'.$row['idProdutor'].'">';
+                    <a href="" data-toggle="modal" data-target="#myModal'.$row['idFornecedor'].'">';
 
                     if($row['repPublic'] == 0){echo '<i class="glyphicon glyphicon-remove" aria-hidden="true"></i>';}else{ echo '<i class="glyphicon glyphicon-ok" aria-hidden="true"></i>';}
 
@@ -56,8 +56,8 @@
 
     <!-- Modal -->
 
-  <div class="modal fade" id="myModal'.$row['idProdutor'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <form id="delRep'.$row['idProdutor'].'" name="delRep'.$row['idProdutor']. '" action="../Database/delProdutor.php" method="post" style="color:#000;">
+  <div class="modal fade" id="myModal'.$row['idFornecedor'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <form id="delRep'.$row['idFornecedor'].'" name="delRep'.$row['idFornecedor']. '" action="../Database/delFornecedor.php" method="post" style="color:#000;">
     
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -66,9 +66,9 @@
             <h4 class="modal-title" id="myModalLabel">Você tem certeza que deseja alterar o status deste item na sua lista.</h4>
           </div>
           <div class="modal-body">
-            Nome: ' .$row['NomeProdutor'].'
+            Nome: ' .$row['NomeFornecedor'].'
           </div>
-          <input type="hidden" id="idProdutor" name="idProdutor" value="'.$row['idProdutor'].'">
+          <input type="hidden" id="idFornecedor" name="idFornecedor" value="'.$row['idFornecedor'].'">
           <div class="modal-footer">
             <button type="submit" value="Cancelar" class="btn btn-default">Não</button>
             <button type="submit" name="update" value="Cadastrar" class="btn btn-primary">Sim</button>
@@ -80,8 +80,8 @@
     </div>
 
     <!-- Modal UPDATE -->
-  <div class="modal fade" id="myModalup'.$row['idProdutor'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <form id="Up'.$row['idProdutor'].'" name="Up'.$row['idProdutor']. '" action="../Database/insertfornecedor.php" method="post" style="color:#000;">
+  <div class="modal fade" id="myModalup'.$row['idFornecedor'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <form id="Up'.$row['idFornecedor'].'" name="Up'.$row['idFornecedor']. '" action="../Database/insertfornecedor.php" method="post" style="color:#000;">
     
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -91,19 +91,19 @@
           </div>
           <div class="modal-body">
             Nome Atual:
-            <input type="text" id="NomeProdutor" name="NomeProdutor" value="' .$row['NomeProdutor'].'">
+            <input type="text" id="NomeFornecedor" name="NomeFornecedor" value="' .$row['NomeFornecedor'].'">
           </div>
           <div class="modal-body">
             Nome Atual:
-            <input type="text" id="TelefoneProdutor" name="TelefoneProdutor" value="'.$row['TelefoneProdutor'].'">
+            <input type="text" id="TelefoneFornecedor" name="TelefoneFornecedor" value="'.$row['TelefoneFornecedor'].'">
           </div>
           <div class="modal-body">
             Nome Atual:
-            <input type="text" id="EmailProdutor" name="EmailProdutor" value="'.$row['EmailProdutor'].'">
+            <input type="text" id="EmailFornecedor" name="EmailFornecedor" value="'.$row['EmailFornecedor'].'">
           </div>        
           <input type="hidden" id="idFabricante" name="idFabricante" value="'.$row['Fabricante_idFabricante'].'">
 
-          <input type="hidden" id="idProdutor" name="idProdutor" value="'.$row['idProdutor'].'">
+          <input type="hidden" id="idFornecedor" name="idFornecedor" value="'.$row['idFornecedor'].'">
                    
           <div class="modal-footer">
             <button type="submit" value="Cancelar" class="btn btn-default">Não</button>
@@ -121,7 +121,7 @@
 
    	}
 
-   	public function listProdutores(){
+   	public function listFornecedor(){
 
    		$this->query = "SELECT *FROM `fornecedores`";
    		$this->result = mysqli_query($this->SQL, $this->query) or die ( mysqli_error($this->SQL));
@@ -129,45 +129,45 @@
    		if($this->result){
    		
    			while ($row = mysqli_fetch_array($this->result)) {
-   				echo '<option value="'.$row['EmailProdutor'].'">'.$row['NomeProdutor'].'</option>';
+   				echo '<option value="'.$row['EmailFornecedor'].'">'.$row['NomeFornecedor'].'</option>';
    			}
 
    	}
    }
 
-   	public function InsertProdutor($NomeProdutor, $TelefoneProdutor, $EmailProdutor, $Fabricante_idFabricante, $idUsuario){
+   	public function InsertFornecedor($NomeFornecedor, $TelefoneFornecedor, $EmailFornecedor, $Fabricante_idFabricante, $idUsuario){
 
-   		$this->query = "INSERT INTO `fornecedores`(`idProdutor`, `NomeProdutor`, `TelefoneProdutor`, `EmailProdutor`,`repAtivo`,`repPublic`, `Fabricante_idFabricante`, `Usuario_idUser`) VALUES (NULL, '$NomeProdutor', '$TelefoneProdutor', '$EmailProdutor', 1, 1, '$Fabricante_idFabricante', '$idUsuario')";
+   		$this->query = "INSERT INTO `fornecedores`(`idFornecedor`, `NomeFornecedor`, `TelefoneFornecedor`, `EmailFornecedor`,`repAtivo`,`repPublic`, `Fabricante_idFabricante`, `Usuario_idUser`) VALUES (NULL, '$NomeFornecedor', '$TelefoneFornecedor', '$EmailFornecedor', 1, 1, '$Fabricante_idFabricante', '$idUsuario')";
    		if($this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL))){
 
-   			header('Location: ../../views/fornecedores/index1.php?alert=1');
+   			header('Location: ../../views/fornecedores/index.php?alert=1');
    		}else{
-   			header('Location: ../../views/fornecedores/index1.php?alert=0');
+   			header('Location: ../../views/fornecedores/index.php?alert=0');
    		}
 
 
    	}
 
-    public function UpdateProdutor($idProdutor, $NomeProdutor, $TelefoneProdutor, $EmailProdutor, $idUsuario)
+    public function UpdateFornecedor($idFornecedor, $NomeFornecedor, $TelefoneFornecedor, $EmailFornecedor, $idUsuario)
     {
-      $this->query = "UPDATE `fornecedores` SET `NomeProdutor`='$NomeProdutor',`TelefoneProdutor`='$TelefoneProdutor',`EmailProdutor`='$EmailProdutor',`Usuario_idUser`='$idUsuario' WHERE `idProdutor` = '$idProdutor'";
+      $this->query = "UPDATE `fornecedores` SET `NomeFornecedor`='$NomeFornecedor',`TelefoneFornecedor`='$TelefoneFornecedor',`EmailFornecedor`='$EmailFornecedor',`Usuario_idUser`='$idUsuario' WHERE `idFornecedor` = '$idFornecedor'";
 
       if($this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL))){
 
-        header('Location: ../../views/fornecedores/index1.php?alert=1');
+        header('Location: ../../views/fornecedores/index.php?alert=1');
       }else{
-        header('Location: ../../views/fornecedores/index1.php?alert=0');
+        header('Location: ../../views/fornecedores/index.php?alert=0');
       }
 
     }
 
-    public function DelProdutor($id)
+    public function DelFornecedor($id)
     {
-        $this->query = "SELECT * FROM `fornecedores` WHERE `idProdutor` = '$id'";
+        $this->query = "SELECT * FROM `fornecedores` WHERE `idFornecedor` = '$id'";
         $this->result = mysqli_query($this->SQL, $this->query);
         if($row = mysqli_fetch_array($this->result)){
 
-                $id = $row['idProdutor'];
+                $id = $row['idFornecedor'];
                 $public = $row['repPublic'];
 
                 if($public == 1){
@@ -176,10 +176,10 @@
                   $p = 1;
                 }
 
-                mysqli_query($this->SQL, "UPDATE `fornecedores` SET `repPublic` = '$p' WHERE `idProdutor` = '$id'") or die(mysqli_error($this->SQL));
-                header('Location: ../../views/fornecedores/index1.php?alert=1');
+                mysqli_query($this->SQL, "UPDATE `fornecedores` SET `repPublic` = '$p' WHERE `idFornecedor` = '$id'") or die(mysqli_error($this->SQL));
+                header('Location: ../../views/fornecedores/index.php?alert=1');
         }else{
-                header('Location: ../../views/fornecedores/index1.php?alert=0');
+                header('Location: ../../views/fornecedores/index.php?alert=0');
               } 
 
     }
@@ -189,7 +189,7 @@
 
     if($value == 0){ $v = 1; }else{ $v = 0; }
 
-    $this->query = "UPDATE `fornecedores` SET `repAtivo` = '$v' WHERE `idProdutor` = '$id'";
+    $this->query = "UPDATE `fornecedores` SET `repAtivo` = '$v' WHERE `idFornecedor` = '$id'";
     $this->result = mysqli_query($this->SQL, $this->query) or die(mysqli_error($this->SQL));
 
     header('Location: ../../views/fornecedores/');
@@ -199,4 +199,4 @@
     
    }
 
-   $produtor = new Produtor;
+   $fornecedor = new Fornecedor;

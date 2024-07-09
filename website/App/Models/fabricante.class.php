@@ -69,7 +69,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Você tem serteza que deseja alterar o status deste item na sua lista.</h4>
+            <h4 class="modal-title" id="myModalLabel">Você tem certeza que deseja alterar o status deste item na sua lista.</h4>
           </div>
           <div class="modal-body">
             Nome: '.$row['NomeFabricante'].'
@@ -113,7 +113,7 @@
 
      }
 
-     	public function InsertFabricante($NomeFabricante, $CNPJFabricante, $EmailFabricante, $EnderecoFabricante, $TelefoneFabricante, $idUsuario, $NomeRepresentante, $TelefoneRepresentante, $EmailRepresentante, $status , $perm)
+     	public function InsertFabricante($NomeFabricante, $CNPJFabricante, $EmailFabricante, $EnderecoFabricante, $TelefoneFabricante, $idUsuario, $NomeFornecedor, $TelefoneFornecedor, $EmailFornecedor, $status , $perm)
       {
 
         if($perm != 1){
@@ -145,16 +145,16 @@
         
           if($idFabricante > 0){
 
-          $this->representante = "INSERT INTO `fornecedores`(`idRepresentante`, `NomeRepresentante`, `TelefoneRepresentante`, `EmailRepresentante`,`repAtivo`,`repPublic`, `Fabricante_idFabricante`, `Usuario_idUser`) VALUES (NULL, '$NomeRepresentante', '$TelefoneRepresentante', '$EmailRepresentante',1 , 1,'$idFabricante', '$idUsuario')";
+          $this->fornecedor = "INSERT INTO `fornecedores`(`idFornecedor`, `NomeFornecedor`, `TelefoneFornecedor`, `EmailFornecedor`,`repAtivo`,`repPublic`, `Fabricante_idFabricante`, `Usuario_idUser`) VALUES (NULL, '$NomeFornecedor', '$TelefoneFornecedor', '$EmailFornecedor',1 , 1,'$idFabricante', '$idUsuario')";
              
-              if($this->rep = mysqli_query($this->SQL, $this->representante) or die(mysqli_error($this->SQL))){
-                  header('Location: ../../views/fabricante/index1.php?alert=1');
+              if($this->rep = mysqli_query($this->SQL, $this->fornecedor) or die(mysqli_error($this->SQL))){
+                  header('Location: ../../views/fabricante/index.php?alert=1');
               }else{
-                  header('Location: ../../views/fabricante/index1.php?alert=0');
+                  header('Location: ../../views/fabricante/index.php?alert=0');
               } 
 
             }else{
-             header("Location: ../../views/fabricante/index1.php?alert=0");
+             header("Location: ../../views/fabricante/index.php?alert=0");
             }
             
      	}//Insert

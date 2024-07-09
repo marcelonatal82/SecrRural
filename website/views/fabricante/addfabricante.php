@@ -73,20 +73,20 @@ if($perm == 1){
                   </div>
 
                   <div class="box-header with-border">
-                <h3 class="box-title">Representante</h3>
+                <h3 class="box-title">Fornecedor</h3>
               </div>
                 
                   <div class="form-group">
                     <label for="exampleInputEmail1">Nome</label>
-                    <input type="text" name="NomeRepresentante" class="form-control" id="exampleInputEmail1" placeholder="Nome do Representante">
+                    <input type="text" name="NomeFornecedor" class="form-control" id="exampleInputEmail1" placeholder="Nome do Fornecedor">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">Telefone</label>
-                    <input type="text" name="TelefoneRepresentante" class="form-control" id="exampleInputEmail1" placeholder="Telefone">
+                    <input type="text" name="TelefoneFornecedor" class="form-control" id="exampleInputEmail1" placeholder="Telefone">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputEmail1">E-mail</label>
-                    <input type="text" name="EmailRepresentante" class="form-control" id="exampleInputEmail1" placeholder="E-mail ">
+                    <input type="text" name="EmailFornecedor" class="form-control" id="exampleInputEmail1" placeholder="E-mail ">
                   </div>
 
                   
