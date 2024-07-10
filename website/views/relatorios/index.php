@@ -54,7 +54,7 @@ echo $aside;
                       <?php
 
                       $relatorio = new Relatorio();
-                      $resps = $relatorio->selectProdutor($perm);
+                      $resps = $relatorio->selectFornecedor($perm);
                       $resps = json_decode($resps, true);
                       foreach ($resps as $resp) {
                         echo '<option value="' . $resp['CodRefEquip'] . '">' . $resp['NomeEquip'] . '</option>';

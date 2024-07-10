@@ -19,7 +19,7 @@ if (isset($_SESSION['notavd']) != NULL) {
       </h1>
       <ol class="breadcrumb">
         <li><a href="../"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Vendas</li>
+        <li class="active">Requisição</li>
       </ol>
     </section>
 
@@ -90,7 +90,7 @@ if (isset($_SESSION['notavd']) != NULL) {
 
                         <tr>
                           <td>Cod.</td>
-                          <td>Equipamento</td>
+                          <td>Maquinários</td>
                           <td>Fabricante</td>
                           <td>Qtde</td>
                           <td>Valor Uni.</td>

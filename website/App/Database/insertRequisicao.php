@@ -22,8 +22,8 @@ if (
         $id = $_POST['idItem'][$key];
         $quant = $_POST['qtd'][$key];
 
-        $requisicao = new requisicao;
-        $result = $requisicao->itensVerify($id, $quant, $perm);
+        $vendas = new vendas;
+        $result = $vendas->itensVerify($id, $quant, $perm);
 
         if ($result['status'] == 0) {
 
@@ -42,8 +42,8 @@ if (
 
         $block = !empty($_POST['block']) ?? null;
 
-        $requisicao = new requisicao();
-        $requisicao->itensVendidos($id, $quant, $nomeCliente, $emailCliente, $cpfCliente, $cart, $idUsuario, $perm, $block);
+        $vendas = new vendas();
+        $vendas->itensVendidos($id, $quant, $nomeCliente, $emailCliente, $cpfCliente, $cart, $idUsuario, $perm, $block);
     }
 } else {
     $_SESSION['alert'] = 0;

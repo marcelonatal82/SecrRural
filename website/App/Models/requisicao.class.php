@@ -6,7 +6,7 @@
 
 require_once 'connect.php';
 
-class requisicao extends Connect
+class vendas extends Connect
 {
 
   public function itensVerify($iditem, $quant, $perm)
@@ -52,9 +52,9 @@ class requisicao extends Connect
   {
 
     $cpfcliente = intval(Connect::limpaCPF_CNPJ($cpfcliente));
-    $idCliente = requisicao::idCliente($cpfcliente); // Verifica se o cliente existe no DB.
+    $idCliente = vendas::idCliente($cpfcliente); // Verifica se o cliente existe no DB.
 
-    $jaComprou = (new requisicao)->jaComprou($idCliente, $iditem, $block);
+    $jaComprou = (new vendas)->jaComprou($idCliente, $iditem, $block);
 
     if ($perm > 2) {
       $_SESSION['msg'] =  '<div class="alert alert-danger alert-dismissible">
@@ -125,12 +125,12 @@ class requisicao extends Connect
               $_SESSION['notavd'] = $cart;
               $_SESSION['msg'] = '<div class="alert alert-success alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            <strong>Sucesso!</strong> Venda efetuada!</div>';
+                            <strong>Sucesso!</strong> Solicitação efetuada!</div>';
             }
           } else {
             $_SESSION['msg'] =  '<div class="alert alert-danger alert-dismissible">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>Erro!</strong> Venda não efetuada! </div>';
+            <strong>Erro!</strong> Solicitação não efetuada! </div>';
 
             header('Location: ../../views/requisicao/');
             exit();
@@ -228,7 +228,7 @@ class requisicao extends Connect
       $dataIn = $dataAno;
       $dataFim = date('Y-m-d H:i:s');
 
-      $query = "SELECT COUNT(*) AS TOTAL FROM `venda` WHERE `cliente_idCliente` = '$idCliente' AND (`datareg` BETWEEN '$dataIn' AND '$dataFim' AND `iditem` = '$idItem')";
+      $query = "SELECT COUNT(*) AS TOTAL FROM `vendas` WHERE `cliente_idCliente` = '$idCliente' AND (`datareg` BETWEEN '$dataIn' AND '$dataFim' AND `iditem` = '$idItem')";
       $result = mysqli_query($this->SQL, $query);
 
       $row = mysqli_fetch_assoc($result);
@@ -237,4 +237,4 @@ class requisicao extends Connect
       return 0;
     }
   }
-}//Fim Class Vendas
+}//Fim Class Requisição

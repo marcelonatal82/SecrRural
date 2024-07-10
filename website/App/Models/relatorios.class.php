@@ -52,11 +52,11 @@ class Relatorio extends Connect
 		}
 	}
 
-	public function selectProdutor($perm)
+	public function selectFornecedor($perm)
 	{
 		if ($perm == 1) {
 
-			$query = "SELECT `idProdutor`,`NomeProdutor` FROM `fornecedores`";
+			$query = "SELECT `idFornecedor`,`NomeFornecedor` FROM `fornecedores`";
 			$result = mysqli_query($this->SQL, $query);
 			while ($row[] = mysqli_fetch_assoc($result));
 			return json_encode($row);
@@ -73,7 +73,7 @@ class Relatorio extends Connect
 				$where = "";
 			}
 
-			$query = "SELECT `CodRefEquip`,`NomeProdutor` FROM `maq` $where";
+			$query = "SELECT `CodRefEquip`,`NomeFornecedor` FROM `maq` $where";
 			$result = mysqli_query($this->SQL, $query);
 			while ($row[] = mysqli_fetch_assoc($result));
 
